@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jazpaj.github.io/afterscroll-studio/sitemap.xml
