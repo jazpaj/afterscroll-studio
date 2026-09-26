@@ -7,11 +7,17 @@ small Python build script. No framework, no build toolchain, no npm install.
 
 ## Run it locally
 
+The committed build is targeted at the GitHub Pages subpath `/afterscroll-studio/`, so serve the
+**parent** folder to mirror the live URL exactly:
+
 ```bash
-python3 -m http.server 4321 --directory afterscroll-studio
+cd .. && python3 -m http.server 4321
 ```
 
-Then open http://localhost:4321.
+Then open http://localhost:4321/afterscroll-studio/.
+
+(If you rebuild for a domain root with `BASE_PATH` unset, serve this folder directly instead:
+`python3 -m http.server 4321` from inside it, then open http://localhost:4321.)
 
 ## Structure
 
