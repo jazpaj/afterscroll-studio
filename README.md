@@ -1,5 +1,7 @@
 # Afterscroll Studio — website
 
+**Live preview → https://jazpaj.github.io/afterscroll-studio/**
+
 A static, dependency-free marketing site: 72 pages of hand-authored content generated from a
 small Python build script. No framework, no build toolchain, no npm install.
 
@@ -42,6 +44,34 @@ The script rewrites every page, recomputes the sitemap, and prints a warning for
 `<title>` exceeds 70 characters or `<meta description>` exceeds 165 — the search-result limits.
 CSS and JS are cache-busted automatically with a content hash (`site.css?v=…`).
 
+## Rebuilding for a deploy target
+
+Internal links are root-absolute, so the build needs to know where the site will live. Two
+environment variables control it:
+
+| Variable | Purpose |
+|---|---|
+| `BASE_PATH` | URL subpath the site is served from. Empty for a domain root. |
+| `SITE_BASE` | Absolute origin used for canonicals, Open Graph URLs and the sitemap. |
+
+**GitHub Pages (current deploy — served from `/afterscroll-studio/`):**
+
+```bash
+BASE_PATH=/afterscroll-studio \
+SITE_BASE=https://jazpaj.github.io/afterscroll-studio \
+python3 afterscroll-studio/_generator/build.py
+```
+
+**A real domain at the root** — this is what you'll switch to when the domain is ready:
+
+```bash
+SITE_BASE=https://afterscrollstudio.com python3 afterscroll-studio/_generator/build.py
+```
+
+Commit and push; Pages redeploys from `main` automatically. Note that the committed HTML has the
+current `BASE_PATH` baked into every link — if you point a custom domain at this repo, rebuild with
+`BASE_PATH` unset first, or every link will 404.
+
 ## Design system
 
 - **Foundation** off-black `#0B0B0C`, ivory `#F2EFE7`, one accent — volt `#D6FF3D`
@@ -53,8 +83,9 @@ CSS and JS are cache-busted automatically with a content hash (`site.css?v=…`)
 
 ## Before you go live
 
-1. **Domain** — `BASE` in `_generator/data.py` is set to `https://afterscrollstudio.com`. Change it,
-   then rebuild, so canonicals, Open Graph URLs and the sitemap point at the real host.
+1. **Domain** — the site is currently built for the GitHub Pages URL. When the real domain is
+   ready, add it under repo Settings → Pages → Custom domain, then rebuild with `BASE_PATH` unset
+   and `SITE_BASE` set to the domain (see *Rebuilding for a deploy target* above).
 2. **Contact form** — `#intake` is currently front-end only: it validates, shows a success state and
    sends nothing. Point it at your form handler or CRM endpoint (Formspree, Netlify Forms, HubSpot,
    your own API) in `_generator/build.py` → `build_contact()`.
@@ -64,8 +95,10 @@ CSS and JS are cache-busted automatically with a content hash (`site.css?v=…`)
    1200×630 PNG and swap the two `og:image` / `twitter:image` references in `build.py` → `head()`.
 5. **Delete or exclude `_generator/`** from the deployed directory if you'd rather not publish the
    source. Nothing on the site links to it.
-6. **404** — `404.html` sits at the root; most hosts (Netlify, Vercel, Cloudflare Pages, GitHub
-   Pages) pick it up automatically.
+6. **404** — `404.html` sits at the root and is already serving on Pages. A `.nojekyll` file keeps
+   GitHub from running the site through Jekyll.
+7. **Repo visibility** — the repo is public, which is what makes the free Pages preview link work.
+   Making it private on a free plan also takes the preview offline.
 
 ## Claims and labelling — please keep these
 
