@@ -27,6 +27,8 @@ def _v(rel):
 
 CSS_V = _v("assets/css/site.css")
 JS_V = _v("assets/js/site.js")
+ICON_V = _v("assets/img/favicon-192.png")
+LOGO_V = _v("assets/img/logo.png")
 TODAY = "2026-09-26"
 PAGES = []   # (path, priority, changefreq)
 SEO_AUDIT = []  # (path, title length, description length)
@@ -104,9 +106,9 @@ def head(title, desc, path, og_kind="website", extra_ld=None, robots=None):
 <meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:image" content="{BASE}/assets/img/og.svg">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="/assets/img/favicon-192.png" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="icon" href="/assets/img/favicon-32.png?v={ICON_V}" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/img/favicon-192.png?v={ICON_V}" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v={ICON_V}">
 {FONTS}
 <link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
 {ldtags}
@@ -124,7 +126,7 @@ def ig_link(cls="social"):
     return f'<a class="{cls}" href="{IG}" target="_blank" rel="noopener" aria-label="Afterscroll Studio on Instagram ({IG_HANDLE})">{IG_ICON}</a>'
 
 LOGO = ('<a class="logo" href="/" aria-label="Afterscroll Studio — home">'
-        '<img class="logo__img" src="/assets/img/logo.png" width="434" height="96" alt="Afterscroll Studio"></a>')
+        f'<img class="logo__img" src="/assets/img/logo.png?v={LOGO_V}" width="434" height="96" alt="Afterscroll Studio"></a>')
 
 def nav():
     links = "".join(f'<a href="{href}">{name}</a>' for name, href in NAV)
