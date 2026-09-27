@@ -104,8 +104,9 @@ def head(title, desc, path, og_kind="website", extra_ld=None, robots=None):
 <meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:image" content="{BASE}/assets/img/og.svg">
 <meta name="theme-color" content="#0B0B0C">
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/img/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 {FONTS}
 <link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
 {ldtags}
@@ -1204,11 +1205,6 @@ def build_404():
 
 # ================================================================ ASSETS
 def build_assets():
-    write_raw("assets/img/favicon.svg",
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
-        '<rect width="64" height="64" rx="12" fill="#0B0B0C"/>'
-        '<circle cx="32" cy="32" r="13" fill="#D6FF3D"/>'
-        '<circle cx="32" cy="32" r="27" fill="none" stroke="#F2EFE7" stroke-opacity=".38" stroke-width="2"/></svg>')
     write_raw("assets/img/og.svg",
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">'
         '<rect width="1200" height="630" fill="#0B0B0C"/>'

@@ -32,7 +32,7 @@ Then open http://localhost:4321/afterscroll-studio/.
 /privacy/  /terms/  404.html
 assets/css/site.css       the whole design system (~620 lines)
 assets/js/site.js         all interaction (~300 lines, vanilla, no deps)
-assets/img/               favicon.svg, og.svg
+assets/img/               logo.png, favicon-32/192.png, apple-touch-icon.png, og.svg
 sitemap.xml  robots.txt
 _generator/               build.py + data.py — NOT part of the deployed site
 ```
