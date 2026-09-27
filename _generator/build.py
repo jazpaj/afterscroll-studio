@@ -116,10 +116,7 @@ def head(title, desc, path, og_kind="website", extra_ld=None, robots=None):
 """
 
 LOGO = ('<a class="logo" href="/" aria-label="Afterscroll Studio — home">'
-        '<svg class="logo__mark" viewBox="0 0 20 20" aria-hidden="true">'
-        '<circle cx="10" cy="10" r="4.4"/>'
-        '<circle cx="10" cy="10" r="9.2" fill="none" stroke="currentColor" stroke-opacity=".38"/></svg>'
-        '<span class="logo__txt">Afterscroll <i>Studio</i></span></a>')
+        '<img class="logo__img" src="/assets/img/logo.png" width="434" height="96" alt="Afterscroll Studio"></a>')
 
 def nav():
     links = "".join(f'<a href="{href}">{name}</a>' for name, href in NAV)
