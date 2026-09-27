@@ -155,7 +155,7 @@ def footer(sticky=True):
 <h2 class="foot__big rv">Your next customer<br>is already scrolling.<br><em>Make them stop.</em></h2>
 <div class="btn-row rv" style="margin-top:clamp(28px,4vw,52px)">
 <a class="btn btn--volt btn--lg" href="/contact/"><span>Start a project &rarr;</span></a>
-<a class="btn btn--lg" href="/work/"><span>See the work</span></a>
+<a class="btn btn--lg" href="/work/"><span>See our portfolio</span></a>
 </div>
 </div>
 <div class="wrap">
@@ -382,7 +382,7 @@ def build_home():
 <p class="lead rv">Afterscroll Studio is a team of 50+ US-based, in-house specialists &mdash; strategists, creatives, media buyers and engineers &mdash; who help ambitious brands win attention and turn it into measurable growth.</p>
 <div class="btn-row rv">
 <a class="btn btn--volt btn--lg" href="/contact/"><span>Start a project &rarr;</span></a>
-<a class="btn btn--lg" href="#work"><span>See our work &darr;</span></a>
+<a class="btn btn--lg" href="#work"><span>See our portfolio &darr;</span></a>
 </div>
 <div class="hero__stats rv" data-grow>
 <div><b class="counter" data-count="50" data-post="+">0</b><span>In-house specialists</span></div>
@@ -465,7 +465,7 @@ def phero(trail, title, lead, meta=None, cta=True):
     if meta:
         m = '<div class="metabar rv">' + "".join(f"<div>{k}<b>{v}</b></div>" for k, v in meta) + "</div>"
     btns = ('<div class="btn-row rv"><a class="btn btn--volt" href="/contact/"><span>Start a project &rarr;</span></a>'
-            '<a class="btn" href="/work/"><span>See the work</span></a></div>') if cta else ""
+            '<a class="btn" href="/work/"><span>See our portfolio</span></a></div>') if cta else ""
     return f"""<section class="phero">
 <div class="wrap">
 {crumbs(trail)}
@@ -1047,7 +1047,7 @@ def build_404():
 <p class="lead rv" style="margin-top:1.5rem">This page doesn't exist &mdash; or it moved. Either way, the work is still here.</p>
 <div class="btn-row rv" style="margin-top:2rem">
 <a class="btn btn--volt" href="/"><span>Back to home</span></a>
-<a class="btn" href="/work/"><span>See the work</span></a>
+<a class="btn" href="/work/"><span>See our portfolio</span></a>
 <a class="btn" href="/insights/"><span>Read the insights</span></a>
 </div>
 </div></section></main>"""
