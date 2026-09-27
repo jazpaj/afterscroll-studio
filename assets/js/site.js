@@ -177,7 +177,7 @@
     var hoverables = 'a,button,.tab,.check,.step';
     document.addEventListener('pointerover', function (e) {
       if (e.target.closest && e.target.closest(hoverables)) {
-        dot.style.width = '52px'; dot.style.height = '52px'; dot.style.background = 'rgba(214,255,61,.16)';
+        dot.style.width = '52px'; dot.style.height = '52px'; dot.style.background = 'rgba(29,63,216,.12)';
       } else { dot.style.width = '34px'; dot.style.height = '34px'; dot.style.background = 'transparent'; }
     });
   }

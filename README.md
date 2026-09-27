@@ -80,7 +80,8 @@ current `BASE_PATH` baked into every link — if you point a custom domain at th
 
 ## Design system
 
-- **Foundation** off-black `#0B0B0C`, ivory `#F2EFE7`, one accent — volt `#D6FF3D`
+- **Foundation** white `#FFFFFF` / soft `#F4F6FB` surfaces, navy ink `#111827`, one accent — cobalt `#1D3FD8`.
+  (CSS token names `--ink` / `--ivory` / `--volt` are historical: they mean surface / text / accent.)
 - **Type** Bricolage Grotesque (display), Inter Tight (body), Instrument Serif (editorial italics)
 - **Motion** IntersectionObserver reveals, word-mask headlines, marquees, magnetic buttons,
   drag rails, animated counters, a stepping system diagram, a live creative-testing matrix.

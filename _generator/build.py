@@ -103,7 +103,7 @@ def head(title, desc, path, og_kind="website", extra_ld=None, robots=None):
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:image" content="{BASE}/assets/img/og.svg">
-<meta name="theme-color" content="#0B0B0C">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/assets/img/favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -115,6 +115,13 @@ def head(title, desc, path, og_kind="website", extra_ld=None, robots=None):
 <div class="grain" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 """
+
+IG_ICON = ('<svg class="ig-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" '
+           'stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/>'
+           '<circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>')
+
+def ig_link(cls="social"):
+    return f'<a class="{cls}" href="{IG}" target="_blank" rel="noopener" aria-label="Afterscroll Studio on Instagram ({IG_HANDLE})">{IG_ICON}</a>'
 
 LOGO = ('<a class="logo" href="/" aria-label="Afterscroll Studio — home">'
         '<img class="logo__img" src="/assets/img/logo.png" width="434" height="96" alt="Afterscroll Studio"></a>')
@@ -134,7 +141,7 @@ def nav():
 <nav class="menu__nav" aria-label="Mobile">{mlinks}</nav>
 <div class="menu__foot">
 <a class="btn btn--volt" href="/contact/"><span>Start a project &rarr;</span></a>
-<a class="mono dim" href="{IG}" target="_blank" rel="noopener">{IG_HANDLE}</a>
+{ig_link()}
 </div>
 </div>
 """
@@ -153,8 +160,9 @@ def footer(sticky=True):
 <div class="foot__grid">
 <div class="foot__col">
 {LOGO}
-<p class="dim" style="margin-top:1rem;max-width:34ch">A global creative growth agency built for the attention economy. Creative, performance, AI and technology in one system.</p>
-<p class="mono faint" style="margin-top:1.2rem">Worldwide &middot; Remote-first</p>
+<p class="dim" style="margin-top:1rem;max-width:34ch">A creative growth agency built for the attention economy. Creative, performance, AI and technology in one in-house team.</p>
+<p class="mono faint" style="margin-top:1.2rem">50+ in-house specialists &middot; US-based</p>
+<div class="socials">{ig_link()}</div>
 </div>
 <div class="foot__col"><h4>Navigate</h4><ul>
 <li><a href="/work/">Work</a></li><li><a href="/services/">Services</a></li>
@@ -163,7 +171,6 @@ def footer(sticky=True):
 <li><a href="/contact/">Contact</a></li></ul></div>
 <div class="foot__col"><h4>Services</h4><ul>{svc}</ul></div>
 <div class="foot__col"><h4>Connect</h4><ul>
-<li><a href="{IG}" target="_blank" rel="noopener">Instagram {IG_HANDLE}</a></li>
 <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
 <li><a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></li>
 <li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li></ul></div>
@@ -272,7 +279,7 @@ def dashboard():
 <div class="kpis">{kh}</div>
 <div class="dash__body">
 <div class="dash__chart">
-<div class="legend"><div><i style="background:rgba(242,239,231,.22)"></i>Paid revenue</div><div><i style="background:#D6FF3D"></i>Owned revenue</div></div>
+<div class="legend"><div><i style="background:rgba(17,24,39,.22)"></i>Paid revenue</div><div><i style="background:#1D3FD8"></i>Owned revenue</div></div>
 <div class="chart">{cols}</div>
 </div>
 <div class="funnel"><p class="mono faint">Creative &rarr; traffic &rarr; conversion &rarr; revenue</p>{fh}</div>
@@ -330,49 +337,31 @@ def icards(arts):
 
 # ================================================================ HOME
 def build_home():
-    srows = ""
-    for s in SERVICES:
-        tags = "".join(f'<span class="chip">{i}</span>' for i in s["items"])
-        srows += f"""<a class="srow rv" href="/services/{s['slug']}/" data-srow>
-<div class="srow__head"><span class="srow__num">{s['num']}</span>
-<h3 class="srow__title">{s['name']}</h3>
-<p class="srow__desc">{s['desc']}</p></div>
-<div class="srow__tags">{tags}</div></a>"""
+    svc = "".join(
+        f'<a class="card svc-card rv" href="/services/{s["slug"]}/"><span class="card__n">{s["num"]} &middot; {s["tag"]}</span>'
+        f'<h3 class="card__t">{s["name"]}</h3><p class="card__d">{s["desc"]}</p>'
+        f'<span class="svc-card__go" aria-hidden="true">&rarr;</span></a>'
+        for s in SERVICES)
 
-    inds = "".join(f'<a href="/industries/{slug}/">{name}<i>{tagline}</i></a>'
-                   for slug, name, tagline, _, _, _ in INDUSTRIES)
+    why = [("US-based &amp; in-house", "Every strategist, creative, media buyer and engineer on your account is a full-time Afterscroll employee based in the US. No offshore hand-offs, no freelancer roulette."),
+           ("Highly trained specialists", "Deep, platform-level expertise across creative, paid media, search, AI and analytics &mdash; with continuous training as the platforms change."),
+           ("One team, one scorecard", "Creative, media, tech and measurement sit in the same room and answer to the same number, so nothing gets lost between agencies."),
+           ("You talk to the doers", "No layers of account managers. The people building your ads, pages and dashboards are the people on your calls.")]
+    whyh = "".join(f'<div class="card rv"><span class="card__n">{i:02d}</span><h3 class="card__t">{t}</h3><p class="card__d">{d}</p></div>'
+                   for i, (t, d) in enumerate(why, 1))
 
-    packs = "".join(
-        f'<div class="card rv"><span class="card__n">PKG</span><h3 class="card__t">{n}</h3>'
-        f'<p class="card__d">{d}</p><ul class="ticks">' + "".join(f"<li>{b}</li>" for b in bul) + "</ul></div>"
-        for n, d, bul in PACKAGES)
+    steps = [("Audit &amp; strategy", "We dig into your data, audience, creative and funnel, then agree the one number we'll be held to."),
+             ("Create &amp; launch", "Our in-house team produces the creative, builds the campaigns and fixes the tracking &mdash; fast."),
+             ("Measure &amp; scale", "Weekly testing, honest reporting and a clear plan for putting more budget behind what works.")]
+    steph = "".join(f'<div class="card rv"><span class="card__n">Step {i}</span><h3 class="card__t">{t}</h3><p class="card__d">{d}</p></div>'
+                    for i, (t, d) in enumerate(steps, 1))
 
-    engs = "".join(
-        f'<div class="card rv"><span class="card__n">{i:02d}</span><h3 class="card__t">{n}</h3>'
-        f'<p class="mono volt">{sub}</p><p class="card__d">{d}</p><ul class="ticks">'
-        + "".join(f"<li>{b}</li>" for b in bul) + "</ul></div>"
-        for i, (n, sub, d, bul) in enumerate(ENGAGEMENTS, 1))
-
-    trends = "".join(
-        f'<div class="trend rv" data-grow><div class="trend__top"><span class="trend__cat">{cat}</span>'
-        f'<span class="trend__mv">{lvl}/100</span></div><h3 class="trend__t">{t}</h3>'
-        f'<p class="trend__d">{d}</p><div class="meter"><i data-w="{lvl}%"></i></div></div>'
-        for cat, t, d, lvl in TRENDS)
-
-    creators = "".join(
-        f'<div class="creator rv"><div class="creator__art art-{(i % 6) + 1}"><b>{n}</b></div>'
-        f'<div class="creator__meta"><div class="creator__row"><span>{fmt}</span><b>{vol}</b></div>'
-        f'<div class="creator__row"><span>{style}</span><span>Rights cleared</span></div></div></div>'
-        for i, (n, fmt, vol, style) in enumerate(CREATORS))
-
-    geo = "".join(f'<span class="chip">{g}</span>' for g in GEO_SERVICES)
-    aiu = "".join(f'<span class="chip">{a}</span>' for a in AI_USES)
-
-    latest = sorted(ARTICLES, key=lambda a: a["date"], reverse=True)[:6]
+    featured = [c for c in CASES if c["slug"] in ("nike-concept", "northbay-supply", "anonymized-hospitality")]
+    latest = sorted(ARTICLES, key=lambda a: a["date"], reverse=True)[:3]
 
     html = head(
-        "Afterscroll Studio — Global Creative Growth Agency",
-        "A global creative growth agency combining culture, content, performance media, AI and technology to turn attention into measurable growth.",
+        "Afterscroll Studio — Creative Growth Agency | 50+ In-House US Team",
+        "A creative growth agency with 50+ US-based, in-house specialists combining creative, performance media, AI and technology to turn attention into measurable growth.",
         "/",
         extra_ld={"@context": "https://schema.org", "@type": "WebSite", "name": SITE, "url": BASE,
                   "publisher": {"@type": "Organization", "name": SITE}})
@@ -383,21 +372,21 @@ def build_home():
 <div class="hero__glow" aria-hidden="true"></div>
 <div class="wrap hero__in">
 <div class="hero__kicker">
-<span class="pill pill--live">Global creative growth agency</span>
-<span class="pill">Creative &times; Performance &times; AI &times; Culture &times; Technology</span>
+<span class="pill pill--live">Creative growth agency</span>
+<span class="pill">50+ in-house specialists &middot; US-based</span>
 </div>
 <h1 class="hero__title"><span class="ln"><span>Make them</span></span><span class="ln"><span>stop</span></span><span class="ln"><span>scrolling.</span></span></h1>
 <div class="hero__grid">
 <div class="hero__copy">
-<p class="lead rv">Afterscroll Studio is a global creative growth agency combining culture, content, performance media, AI and technology to help ambitious brands win attention &mdash; and turn it into measurable growth.</p>
+<p class="lead rv">Afterscroll Studio is a team of 50+ US-based, in-house specialists &mdash; strategists, creatives, media buyers and engineers &mdash; who help ambitious brands win attention and turn it into measurable growth.</p>
 <div class="btn-row rv">
 <a class="btn btn--volt btn--lg" href="/contact/"><span>Start a project &rarr;</span></a>
-<a class="btn btn--lg" href="#work"><span>Explore our work &darr;</span></a>
+<a class="btn btn--lg" href="#work"><span>See our work &darr;</span></a>
 </div>
 <div class="hero__stats rv" data-grow>
-<div><b class="counter" data-count="6" data-post=" stages">0</b><span>The Afterscroll System</span></div>
+<div><b class="counter" data-count="50" data-post="+">0</b><span>In-house specialists</span></div>
+<div><b class="counter" data-count="100" data-post="%">0</b><span>US-based team</span></div>
 <div><b class="counter" data-count="18" data-post="+">0</b><span>Industries served</span></div>
-<div><b class="counter" data-count="7" data-post="">0</b><span>Capability groups</span></div>
 </div>
 </div>
 <div class="collage rv" aria-hidden="true">
@@ -414,196 +403,55 @@ def build_home():
 
 {marquee(VERTICAL_MARQUEE)}
 
-<section class="sec sec--tight">
-<div class="wrap sec-head">
-<h2 class="h2 rv" data-split>Built for brands that want to move faster.</h2>
-<p class="lead rv">We work with e-commerce and DTC brands, SaaS and startups, local businesses, restaurants and hospitality, real estate and construction, professional services, healthcare, beauty and wellness, fashion, consumer products, creators, founders and established international companies.</p>
+<section class="sec">
+<div class="wrap">
+<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div>{eyebrow("Why Afterscroll")}<h2 class="h1 rv" data-split>50+ specialists. One in-house team.</h2></div>
+<p class="lead rv">Most agencies outsource the work you're paying for. We don't. Our entire team is hired, trained and managed in-house in the US &mdash; so the quality, speed and accountability stay with us.</p>
+</div>
+<div class="grid grid-4">{whyh}</div>
 </div>
 </section>
 
 <section class="sec sec--ink2" id="services">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(32px,4vw,64px)">
-<div>{eyebrow("What we do")}<h2 class="h1 rv" data-split>We build attention systems.</h2></div>
-<p class="lead rv">From the first impression to the final conversion, we connect creative, media, technology and measurement into one growth system.</p>
+<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div>{eyebrow("What we do")}<h2 class="h1 rv" data-split>Everything growth needs, under one roof.</h2></div>
+<p class="lead rv">Creative, media, search, AI and technology &mdash; connected into one growth system instead of five disconnected vendors.</p>
 </div>
-{srows}
-<div class="btn-row rv" style="margin-top:clamp(28px,3vw,44px)"><a class="btn" href="/services/"><span>All services &rarr;</span></a></div>
+<div class="grid grid-3">{svc}</div>
+<div class="btn-row rv" style="margin-top:clamp(24px,3vw,40px)"><a class="btn" href="/services/"><span>See the full service list &rarr;</span></a></div>
 </div>
 </section>
 
 <section class="sec" id="work">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(32px,4vw,64px)">
-<div>{eyebrow("Featured work")}<h2 class="h1 rv" data-split>Work that moves.</h2></div>
-<p class="lead rv">A mix of clearly labelled concept campaigns, illustrative scenarios and anonymized engagements &mdash; built to show how we think, not to dress up numbers.</p>
+<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div>{eyebrow("Case studies")}<h2 class="h1 rv" data-split>Work that moves.</h2></div>
+<p class="lead rv">A few examples of how we think and build &mdash; each one clearly labelled as concept, illustrative or anonymized.</p>
 </div>
-<div class="work">{work_cards(CASES, 4)}</div>
-<div class="btn-row rv" style="margin-top:clamp(28px,3vw,44px)"><a class="btn" href="/work/"><span>All work &rarr;</span></a></div>
-</div>
-</section>
-
-<section class="sec sec--ink2">
-<div class="wrap">
-<div class="sec-head sec-head--stack" style="margin-bottom:clamp(32px,4vw,56px)">
-<div>{eyebrow("The Afterscroll System")}<h2 class="h1 rv" data-split>One loop. Six stages. No guessing.</h2></div>
-</div>
-{system_block()}
-</div>
-</section>
-
-<section class="sec">
-<div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("Platform operations")}<h2 class="h1 rv" data-split>When the platform stops playing nice.</h2></div>
-<p class="lead rv">We help brands recover, configure, verify, secure and properly connect the platforms their business depends on.</p>
-</div>
-{caps_block()}
+<div class="work">{work_cards(featured)}</div>
+<div class="btn-row rv" style="margin-top:clamp(24px,3vw,40px)"><a class="btn" href="/work/"><span>All case studies &rarr;</span></a></div>
 </div>
 </section>
 
 <section class="sec sec--ink2">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("AI &amp; automation")}<h2 class="h1 rv" data-split>Marketing moves at machine speed.</h2></div>
-<p class="lead rv">Human strategy, machine acceleration. AI belongs in the workflow &mdash; research, variants, reporting and conversations &mdash; with a person accountable for everything that ships.</p>
+<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div>{eyebrow("How we work")}<h2 class="h1 rv" data-split>Three steps. No guessing.</h2></div>
+<p class="lead rv">A simple, repeatable process run by the same in-house team from kickoff to scale.</p>
 </div>
-{ai_flow()}
-<div class="tagcloud rv" style="margin-top:clamp(24px,3vw,40px)">{aiu}</div>
-<div class="btn-row rv" style="margin-top:clamp(24px,3vw,36px)"><a class="btn" href="/services/ai/"><span>How we use AI &rarr;</span></a></div>
+<div class="grid grid-3">{steph}</div>
 </div>
 </section>
 
 <section class="sec">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("Creators &amp; UGC")}<h2 class="h1 rv" data-split>People don't want ads. They want something worth watching.</h2></div>
-<p class="lead rv">Creator sourcing, strategy, seeding and production &mdash; run as a roster with rights cleared up front, not a marketplace of one-off buys.</p>
-</div>
-<div class="rail-wrap">
-<div class="rail">{creators}</div>
-<div class="rail-nav"><button class="rail-btn" data-rail="prev" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 2L4 8l6 6"/></svg></button><button class="rail-btn" data-rail="next" aria-label="Next"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 2l6 6-6 6"/></svg></button></div>
-</div>
-<p class="form__note rv">Illustrative roster categories. Creator names and deliverables are agreed per engagement.</p>
-</div>
-</section>
-
-{marquee(MICROCOPY, cls="marquee--rev", big=True)}
-
-<section class="sec">
-<div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("Paid media")}<h2 class="h1 rv" data-split>Creative is the new targeting.</h2></div>
-<p class="lead rv">Broad delivery plus high creative variance beats granular targeting on most consolidated accounts. So we industrialise the testing and keep the structure simple.</p>
-</div>
-{matrix_block()}
-<div class="btn-row rv" style="margin-top:clamp(24px,3vw,36px)"><a class="btn" href="/services/performance/"><span>Performance media &rarr;</span></a></div>
-</div>
-</section>
-
-<section class="sec sec--ink2">
-<div class="wrap">
-<div class="two two--l">
-<div class="stack">
-{eyebrow("AI search &amp; GEO")}
-<h2 class="h1 rv" data-split>Answer engines are the new front page.</h2>
-<p class="lead rv">Brands increasingly need to appear in Google Search, Google's AI experiences, ChatGPT-style search, AI assistants and answer engines &mdash; as well as traditional results. That takes entity clarity, extractable content and third-party corroboration.</p>
-<div class="tagcloud rv">{geo}</div>
-<div class="btn-row rv"><a class="btn" href="/services/seo-geo/"><span>Search &amp; GEO &rarr;</span></a></div>
-</div>
-<div class="card rv" style="gap:1.2rem">
-<span class="card__n">Reality check</span>
-<h3 class="card__t">What nobody can promise</h3>
-<p class="card__d">No agency controls whether a model mentions you. Outputs vary by prompt, model version and user context. What we can do is make you the clearest, best-corroborated answer in your category &mdash; then measure mention presence and accuracy against a fixed prompt set every month.</p>
-<ul class="ticks"><li>Fixed monthly prompt audit</li><li>Mention accuracy tracking</li><li>Branded search and direct traffic as commercial proxies</li><li>No guaranteed-ranking claims</li></ul>
-</div>
-</div>
-</div>
-</section>
-
-<section class="sec">
-<div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("Analytics")}<h2 class="h1 rv" data-split>No vanity metrics.</h2></div>
-<p class="lead rv">One weekly scorecard reconciling platform data, analytics and actual orders. Creative &rarr; traffic &rarr; conversion &rarr; revenue, read in that order.</p>
-</div>
-{dashboard()}
-</div>
-</section>
-
-<section class="sec sec--ink2">
-<div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("Industries")}<h2 class="h1 rv" data-split>We work wherever there's something worth building.</h2></div>
-<p class="lead rv">Every category has its own physics &mdash; margin structure, buying cycle, platform rules and competitive tells. Pick yours.</p>
-</div>
-<div class="big-list">{inds}</div>
-</div>
-</section>
-
-<section class="sec">
-<div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("Ways to work together")}<h2 class="h1 rv" data-split>Engagement models, not packages you can't change.</h2></div>
-<p class="lead rv">We scope around the outcome and the stage you're at. Investment depends on scope, channels, production volume and speed &mdash; we'll give you a straight number after one conversation.</p>
-</div>
-<div class="grid grid-3">{engs}</div>
-<div class="btn-row rv" style="margin-top:clamp(26px,3vw,40px)"><a class="btn btn--volt" href="/contact/"><span>Build your engagement &rarr;</span></a><a class="btn" href="/solutions/"><span>See productized packages</span></a></div>
-</div>
-</section>
-
-<section class="sec sec--ink2">
-<div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("Productized packages")}<h2 class="h1 rv" data-split>Defined scope. Fast start.</h2></div>
-<p class="lead rv">Fixed-scope programs for specific gaps. All of them are customizable &mdash; they're a starting point, not a menu you have to order from.</p>
-</div>
-<div class="grid grid-3">{packs}</div>
-</div>
-</section>
-
-<section class="sec">
-<div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("What's moving right now")}<h2 class="h1 rv" data-split>The trend report.</h2></div>
-<p class="lead rv">Our read on formats, platforms, creators, advertising, search, AI and consumer behaviour &mdash; as of <b class="volt">26 September 2026</b>. Trends move fast: this is analysis, not a live data feed.</p>
-</div>
-<div class="grid grid-3">{trends}</div>
-</div>
-</section>
-
-<section class="sec sec--ink2">
-<div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(30px,3.5vw,52px)">
-<div>{eyebrow("Afterscroll / Insights")}<h2 class="h1 rv" data-split>Field notes from the attention economy.</h2></div>
-<p class="lead rv">Practical writing on paid media, creative, search, AI, retention and the platform problems nobody warns you about.</p>
+<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div>{eyebrow("Insights")}<h2 class="h1 rv" data-split>Field notes from our team.</h2></div>
 </div>
 <div class="ins-grid">{icards(latest)}</div>
-<div class="btn-row rv" style="margin-top:clamp(26px,3vw,40px)"><a class="btn" href="/insights/"><span>All {len(ARTICLES)} articles &rarr;</span></a></div>
-</div>
-</section>
-
-<section class="sec">
-<div class="wrap two">
-<div class="stack">
-{eyebrow("Built without borders")}
-<h2 class="h1 rv" data-split>Global by default. Remote by design.</h2>
-<p class="lead rv">From emerging startups to established global brands, we work across markets, time zones, industries and platforms. We're remote-first &mdash; we don't claim offices we don't have.</p>
-<div class="btn-row rv"><a class="btn" href="/about/"><span>About the studio &rarr;</span></a></div>
-</div>
-<div class="map rv">
-<svg viewBox="0 0 420 200" role="img" aria-label="Stylised world map showing regions served"><g>
-{"".join('<circle class="dot" cx="%d" cy="%d" r="2"/>' % (18 + (i * 13) % 392, 22 + ((i * 29) % 7) * 22) for i in range(120))}
-<circle class="hot" cx="72" cy="62" r="4.5"/><circle class="hot" cx="96" cy="128" r="4.5"/>
-<circle class="hot" cx="196" cy="52" r="4.5"/><circle class="hot" cx="232" cy="92" r="4.5"/>
-<circle class="hot" cx="318" cy="72" r="4.5"/><circle class="hot" cx="352" cy="148" r="4.5"/>
-</g></svg>
-<div class="regions">
-<div><b>North America</b>US &amp; Canada</div><div><b>Europe</b>UK, EU</div>
-<div><b>Asia-Pacific</b>SEA, Japan, Korea</div><div><b>Middle East</b>GCC</div>
-<div><b>Australia</b>AU &amp; NZ</div><div><b>Latin America</b>MX, BR, AR</div>
-</div>
-</div>
+<div class="btn-row rv" style="margin-top:clamp(24px,3vw,40px)"><a class="btn" href="/insights/"><span>All insights &rarr;</span></a></div>
 </div>
 </section>
 
@@ -722,24 +570,26 @@ def build_case(c):
 # ================================================================ SERVICES
 def build_services():
     trail = [("Services", "/services/")]
-    cards = ""
+    rows = ""
     for s in SERVICES:
-        tags = "".join(f'<span class="chip">{i}</span>' for i in s["items"][:8])
-        cards += f"""<a class="card rv" href="/services/{s['slug']}/">
-<span class="card__n">{s['num']} &middot; {s['tag']}</span>
-<h3 class="card__t" style="font-size:var(--step-2);text-transform:uppercase">{s['name']}</h3>
-<p class="card__d">{s['desc']}</p>
-<div class="tagcloud">{tags}</div>
-<span class="tlink" style="margin-top:1rem;align-self:flex-start">Explore &rarr;</span></a>"""
+        tags = "".join(f'<span class="chip">{i}</span>' for i in s["items"])
+        rows += f"""<a class="srow is-open rv" href="/services/{s['slug']}/" id="{s['slug']}">
+<div class="srow__head"><span class="srow__num">{s['num']}</span>
+<h2 class="srow__title">{s['name']}</h2>
+<p class="srow__desc">{s['desc']}</p></div>
+<div class="srow__tags">{tags}</div>
+<span class="tlink srow__more">Explore {s['name']} &rarr;</span></a>"""
     html = head("Services | Afterscroll Studio",
                 "Creative and short-form video, paid social and search, SEO and GEO, AI automation, retention, brand and web, plus platform operations support.",
                 "/services/", extra_ld=bc_ld(trail))
     html += nav() + "<main id=\"main\">"
     html += phero(trail, "We build attention systems.",
-                  "From the first impression to the final conversion, we connect creative, media, technology and measurement into one growth system. Seven capability groups, run as one team.",
+                  "From the first impression to the final conversion, our 50+ in-house specialists connect creative, media, technology and measurement into one growth system. Seven capability groups, run as one team.",
                   meta=[("Capability groups", "7"), ("Engagement models", "5"), ("Productized packages", "6"), ("Industries", "18+")])
-    html += f"""<section class="sec sec--tight"><div class="wrap"><div class="grid grid-2">{cards}</div></div></section>
-{marquee(MICROCOPY, big=True)}
+    html += f"""<section class="sec sec--tight"><div class="wrap">
+<div class="sec-head" style="margin-bottom:clamp(24px,3vw,44px)"><div>{eyebrow("Full service list")}<h2 class="h2 rv" data-split>Everything we do, in one place.</h2></div><p class="lead rv">Every service our in-house team delivers. Tap any service for scope, process and the numbers we hold it to.</p></div>
+{rows}
+</div></section>
 <section class="sec"><div class="wrap">
 <div class="sec-head sec-head--stack" style="margin-bottom:clamp(30px,3.5vw,52px)"><div>{eyebrow("The Afterscroll System")}<h2 class="h1 rv" data-split>How the work actually runs.</h2></div></div>
 {system_block()}
@@ -860,7 +710,7 @@ def build_industries():
     html += nav() + "<main id=\"main\">"
     html += phero(trail, "We work wherever there's something worth building.",
                   "Every category has its own physics: margin structure, buying cycle, platform policy, competitive tells and the specific reason customers hesitate. The system stays the same. The plays change completely.",
-                  meta=[("Industries", str(len(INDUSTRIES))), ("Markets", "Worldwide"), ("Model", "Remote-first"), ("Engagements", "Retainer to project")])
+                  meta=[("Industries", str(len(INDUSTRIES))), ("Markets", "Worldwide"), ("Team", "50+ in-house, US-based"), ("Engagements", "Retainer to project")])
     html += f'<section class="sec sec--tight"><div class="wrap"><div class="grid grid-3">{cards}</div></div></section>{marquee(VERTICAL_MARQUEE, cls="marquee--rev")}</main>'
     html += footer()
     write("/industries/", html, "0.9")
@@ -917,13 +767,13 @@ def build_about():
     vh = "".join(f'<div class="card rv"><span class="card__n">{i:02d}</span><h3 class="card__t">{t}</h3><p class="card__d">{d}</p></div>'
                  for i, (t, d) in enumerate(values, 1))
     html = head("About | Afterscroll Studio",
-                "A remote-first global creative growth agency working at the intersection of creative, performance, AI, culture and technology — our philosophy, desks and process.",
+                "A creative growth agency with 50+ US-based, in-house specialists working across creative, performance, AI, culture and technology — our philosophy, team and process.",
                 "/about/", extra_ld=bc_ld(trail))
     html += nav() + "<main id=\"main\">"
     html += phero(trail, "We live between culture and conversion.",
                   "Afterscroll Studio exists because advertising, entertainment, creators, commerce, search and AI stopped being separate disciplines. A brand now competes for attention in the same feed as everyone's friends, then has to convert that attention with the discipline of a performance team. Very few companies are built to do both.",
-                  meta=[("Founded on", "Creative × performance × AI"), ("Model", "Remote-first, worldwide"),
-                        ("Disciplines", "6 desks"), ("Instagram", IG_HANDLE)])
+                  meta=[("Founded on", "Creative × performance × AI"), ("Team", "50+ in-house, US-based"),
+                        ("Disciplines", "6 desks"), ("Instagram", f'<a href="{IG}" target="_blank" rel="noopener" class="ig-inline">{IG_ICON}{IG_HANDLE}</a>')])
     html += f"""
 <section class="sec sec--tight"><div class="wrap two two--l">
 <div class="stack">{eyebrow("Philosophy")}
@@ -934,7 +784,7 @@ def build_about():
 <div class="stack">
 <blockquote class="quote rv">The brands winning right now aren't the ones with the biggest budgets. They're the ones producing the most genuinely different ideas and reading the results honestly.</blockquote>
 <div class="stat-strip rv">
-<div><b>6</b><span>System stages</span></div><div><b>7</b><span>Capability groups</span></div>
+<div><b>50+</b><span>In-house specialists</span></div><div><b>7</b><span>Capability groups</span></div>
 <div><b>18+</b><span>Industries</span></div><div><b>1</b><span>Scorecard</span></div>
 </div>
 </div>
@@ -944,7 +794,7 @@ def build_about():
 <div class="grid grid-3">{vh}</div>
 </div></section>
 <section class="sec"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("The team")}<h2 class="h1 rv" data-split>Six desks, one loop.</h2></div><p class="lead rv">We staff engagements by discipline rather than by account manager. You talk to the people doing the work.</p></div>
+<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("The team")}<h2 class="h1 rv" data-split>50+ specialists. Six desks.</h2></div><p class="lead rv">Our entire team is full-time, in-house and based in the US &mdash; highly trained specialists organised into six desks. We staff engagements by discipline rather than by account manager, so you talk to the people doing the work.</p></div>
 <div class="team">{team}</div>
 <p class="form__note rv" style="margin-top:1.4rem">Desk structure shown. Named team allocation is confirmed at proposal stage for each engagement.</p>
 </div></section>
@@ -953,8 +803,8 @@ def build_about():
 {system_block()}
 </div></section>
 <section class="sec"><div class="wrap two">
-<div class="stack">{eyebrow("Global presence")}<h2 class="h1 rv" data-split>Built without borders.</h2>
-<p class="lead rv">From emerging startups to established global brands, we work across markets, time zones, industries and platforms. We're remote-first and we don't claim physical offices we don't have &mdash; what we do have is coverage across the working days our clients operate in.</p>
+<div class="stack">{eyebrow("Where we work")}<h2 class="h1 rv" data-split>US team. Global clients.</h2>
+<p class="lead rv">Our 50+ specialists are all based in the US and work in-house. From there we partner with emerging startups and established brands across markets, time zones, industries and platforms.</p>
 <div class="tagcloud rv">{"".join(f'<span class="chip">{r}</span>' for r in ["North America","Europe","Asia-Pacific","Middle East","Australia","Latin America"])}</div>
 </div>
 <div class="map rv">
@@ -964,8 +814,8 @@ def build_about():
 <circle class="hot" cx="196" cy="52" r="4.5"/><circle class="hot" cx="232" cy="92" r="4.5"/>
 <circle class="hot" cx="318" cy="72" r="4.5"/><circle class="hot" cx="352" cy="148" r="4.5"/>
 </svg>
-<div class="regions"><div><b>Coverage</b>Worldwide, remote-first</div><div><b>Languages</b>English + partner network</div>
-<div><b>Time zones</b>Overlapping AM/PM windows</div><div><b>Offices</b>None claimed</div></div>
+<div class="regions"><div><b>Team</b>50+ in-house, US-based</div><div><b>Clients</b>Worldwide</div>
+<div><b>Languages</b>English + partner network</div><div><b>Hours</b>US business hours + overlap</div></div>
 </div>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap two">
@@ -998,7 +848,7 @@ def build_contact():
 <div class="wrap">{crumbs(trail)}
 <h1 class="phero__t"><span class="rv-line"><span>Let's build something people can't ignore.</span></span></h1>
 <div class="phero__grid"><p class="lead rv">Tell us where you are and what you're trying to move. You'll hear back from a person who has read it &mdash; usually within one working day.</p>
-<div class="stack"><a class="tlink rv" href="mailto:{EMAIL}">{EMAIL}</a><a class="tlink rv" href="{IG}" target="_blank" rel="noopener">Instagram {IG_HANDLE}</a><a class="tlink rv" href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></div></div>
+<div class="stack"><a class="tlink rv" href="mailto:{EMAIL}">{EMAIL}</a><a class="tlink rv" href="{IG}" target="_blank" rel="noopener" aria-label="Afterscroll Studio on Instagram">{IG_ICON} Instagram</a><a class="tlink rv" href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></div></div>
 </div></section>
 <section class="sec sec--tight"><div class="wrap">
 <div class="two two--l" style="align-items:start">
@@ -1207,15 +1057,15 @@ def build_404():
 def build_assets():
     write_raw("assets/img/og.svg",
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">'
-        '<rect width="1200" height="630" fill="#0B0B0C"/>'
-        '<circle cx="1000" cy="120" r="260" fill="#D6FF3D" fill-opacity=".14"/>'
-        '<g fill="#F2EFE7" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700">'
+        '<rect width="1200" height="630" fill="#FFFFFF"/>'
+        '<circle cx="1000" cy="120" r="260" fill="#1D3FD8" fill-opacity=".14"/>'
+        '<g fill="#111827" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700">'
         '<text x="80" y="250" font-size="104" letter-spacing="-4">MAKE THEM</text>'
         '<text x="80" y="358" font-size="104" letter-spacing="-4">STOP</text>'
-        '<text x="80" y="466" font-size="104" letter-spacing="-4" fill="#D6FF3D">SCROLLING.</text>'
-        '<text x="80" y="556" font-size="26" letter-spacing="6" fill="#F2EFE7" fill-opacity=".62">'
+        '<text x="80" y="466" font-size="104" letter-spacing="-4" fill="#1D3FD8">SCROLLING.</text>'
+        '<text x="80" y="556" font-size="26" letter-spacing="6" fill="#111827" fill-opacity=".62">'
         'AFTERSCROLL STUDIO &#183; GLOBAL CREATIVE GROWTH AGENCY</text></g>'
-        '<circle cx="1094" cy="540" r="26" fill="#D6FF3D"/></svg>')
+        '<circle cx="1094" cy="540" r="26" fill="#1D3FD8"/></svg>')
     write_raw("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
 
 def build_sitemap():
