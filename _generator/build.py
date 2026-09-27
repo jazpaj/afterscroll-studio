@@ -163,7 +163,6 @@ def footer(sticky=True):
 <div class="foot__col">
 {LOGO}
 <p class="dim" style="margin-top:1rem;max-width:34ch">A creative growth agency built for the attention economy. Creative, performance, AI and technology in one in-house team.</p>
-<p class="mono faint" style="margin-top:1.2rem">50+ in-house specialists &middot; US-based</p>
 <div class="socials">{ig_link()}</div>
 </div>
 <div class="foot__col"><h4>Navigate</h4><ul>
