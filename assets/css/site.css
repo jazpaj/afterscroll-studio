@@ -515,6 +515,7 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 .phero__grid{display:grid;gap:clamp(24px,3vw,48px);margin-top:clamp(24px,3vw,44px)}
 @media (min-width:920px){.phero__grid{grid-template-columns:1.1fr 1fr;align-items:end}}
 .metabar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1.2rem;padding-block:clamp(18px,2vw,26px);border-block:1px solid var(--line)}
+.phero__grid + .metabar{margin-top:clamp(32px,4.5vw,64px)}
 .metabar div{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ivory-faint)}
 .metabar b{display:block;font-family:var(--font-body);font-weight:500;font-size:.95rem;letter-spacing:0;text-transform:none;color:var(--ivory);margin-top:.35rem;line-height:1.35}
 
