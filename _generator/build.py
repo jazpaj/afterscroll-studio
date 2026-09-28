@@ -176,7 +176,6 @@ def footer(sticky=True):
 <li><a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></li>
 <li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li></ul></div>
 </div>
-<p class="foot__disc">Case studies marked <b>concept</b>, <b>speculative</b>, <b>illustrative</b> or <b>anonymized</b> are demonstrations of approach, not verified client results. Brand names used in concept work identify the hypothetical subject only and imply no relationship or endorsement. Platform recovery, appeal, verification, reinstatement and review-removal work is offered as support: we prepare, troubleshoot and manage the process. Outcomes are decided by the platforms and are never guaranteed. Trend content reflects the date shown and is not live data.</p>
 <div class="foot__bottom">
 <span>&copy; <span id="year">2026</span> {SITE}. All rights reserved.</span>
 <span>Built for the attention economy</span>

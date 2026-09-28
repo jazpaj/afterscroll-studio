@@ -119,4 +119,4 @@ The copy is deliberately careful in two places, and both are legal/ethical load-
   Outcomes belong to the platforms. Nothing on the site promises a recovery, a verification, a
   reinstatement or an AI-search ranking, and it shouldn't start to.
 
-The footer disclaimer on every page carries both points.
+The site-wide footer disclaimer was removed at the owner's request (2026-09-28); the per-item case-study labels and the "support" wording on service pages still carry both points.

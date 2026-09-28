@@ -508,7 +508,6 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 .foot__col a{color:var(--ivory-dim);transition:color .3s,padding-left .3s}
 .foot__col a:hover{color:var(--volt);padding-left:5px}
 .foot__bottom{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;padding-block:1.6rem;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ivory-faint)}
-.foot__disc{max-width:70ch;padding-bottom:2rem;font-size:.76rem;color:var(--ivory-faint);line-height:1.6}
 
 /* ---------- page hero (interior) ---------- */
 .phero{padding-top:clamp(112px,15vw,190px);padding-bottom:clamp(36px,5vw,72px);position:relative}
