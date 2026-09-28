@@ -443,8 +443,23 @@ def build_home():
 </div>
 </div>
 <div class="collage rv" aria-hidden="true">
-<div class="tile tile--art"><span class="tile__tag">Campaign / 001</span><span class="tile__big">Attention<br>is the<br>new shelf</span></div>
-<div class="tile tile--reel"><span class="tile__tag">Reel preview</span><span class="tile__play"></span><span class="tile__tag">0:11 &middot; hook A</span></div>
+<div class="tile tile--art"><span class="tile__tag">Campaign / 001</span>
+<div class="ad">
+<div class="ad__top"><i class="ad__av"></i><div><b>Your Brand</b><span>Sponsored</span></div><i class="ad__dots"></i></div>
+<div class="ad__media"><span class="ad__kicker">New drop</span><span class="ad__hl">Attention is the new shelf.</span><i class="ad__prod"></i><i class="ad__shadow"></i></div>
+<div class="ad__cta"><span>yourbrand.com</span><b>Shop now &rarr;</b></div>
+</div></div>
+<div class="tile tile--reel"><span class="tile__tag">Reel preview</span>
+<div class="reel">
+<div class="reel__bar"><i></i></div>
+<div class="reel__cap"><span>POV:</span><span>you finally</span><span>stopped scrolling</span></div>
+<ul class="reel__side">
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.1A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.8c0 5.5-7.5 10.1-7.5 10.1z"/></svg><b>48.2K</b></li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><b>1,204</b></li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5l7 7-7 7v-4c-5 0-8 1.5-10 5 .7-5.5 3.5-9.5 10-10z"/></svg><b>Share</b></li>
+</ul>
+<div class="reel__foot"><b>@yourbrand</b><span>&#9835; original audio &middot; 0:11</span></div>
+</div></div>
 <div class="tile"><span class="tile__tag">Hook rate</span><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="tile__tag">6 variants live</span></div>
 <div class="tile tile--volt"><span class="tile__tag">Blended ROAS</span><span class="tile__big">3.62x</span><span class="tile__tag">Illustrative</span></div>
 <div class="tile"><span class="tile__tag">Revenue trend</span><svg class="sparkline" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,34 L18,28 L34,30 L52,20 L70,22 L88,11 L106,8 L120,3"/></svg></div>
