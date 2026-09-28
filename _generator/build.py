@@ -427,6 +427,7 @@ def build_home():
 <div class="wrap hero__in">
 <div class="hero__kicker">
 <span class="pill pill--live">Creative growth agency</span>
+<a class="pill pill--cta" href="/staffing/"><b>New</b>VA staffing is now live <span aria-hidden="true">&rarr;</span></a>
 </div>
 <h1 class="hero__title"><span class="ln"><span>Make them</span></span><span class="ln"><span>stop</span></span><span class="ln"><span>scrolling.</span></span></h1>
 <div class="hero__grid">

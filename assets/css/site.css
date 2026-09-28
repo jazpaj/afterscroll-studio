@@ -756,3 +756,10 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 }
 .ccard--more{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.5rem;border-style:dashed;border-color:var(--line-strong);background:transparent;min-height:180px}
 .ccard__moret{font-family:var(--font-display);font-weight:800;font-size:var(--step-2);letter-spacing:-.03em;line-height:1.05;color:var(--volt);margin-bottom:.4rem}
+
+/* ---------- hero announcement pill ---------- */
+.pill--cta{background:var(--volt);border-color:var(--volt);color:#fff;padding-left:.35rem;transition:background .3s,border-color .3s,transform .4s var(--ease)}
+.pill--cta b{padding:.18rem .5rem;border-radius:99px;background:#fff;color:var(--volt);font-weight:600;font-size:.62rem;letter-spacing:.12em}
+.pill--cta span{display:inline-block;transition:transform .35s var(--ease)}
+.pill--cta:hover{background:var(--volt-dim);border-color:var(--volt-dim)}
+.pill--cta:hover span{transform:translateX(3px)}
