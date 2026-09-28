@@ -166,7 +166,7 @@ def footer(sticky=True):
 <div class="socials">{ig_link()}</div>
 </div>
 <div class="foot__col"><h4>Navigate</h4><ul>
-<li><a href="/work/">Work</a></li><li><a href="/services/">Services</a></li><li><a href="/staffing/">Staffing</a></li>
+<li><a href="/work/">Portfolio</a></li><li><a href="/services/">Services</a></li><li><a href="/staffing/">Staffing</a></li>
 <li><a href="/solutions/">Solutions</a></li><li><a href="/industries/">Industries</a></li>
 <li><a href="/insights/">Insights</a></li><li><a href="/about/">About</a></li>
 <li><a href="/contact/">Contact</a></li></ul></div>
@@ -199,9 +199,25 @@ def _png_size(rel):
 # marks whose wordmark is small relative to their icon need a nudge to read at strip size
 LOGO_BOOST = {"phoenix-peptide": 1.5}
 
-def logo_strip():
+def logo_img(name, slug, style):
+    rel = f"assets/img/clients/{slug}.png"
+    if not os.path.exists(os.path.join(OUT, rel)):
+        return f'<span class="wm__txt wm--{style}">{name}</span>'
+    w, h = _png_size(rel)
+    dh = max(18, min(40, round((4200 / (w / h)) ** 0.5)))
+    dh = round(dh * LOGO_BOOST.get(slug, 1))
+    return (f'<img src="/{rel}?v={_v(rel)}" alt="{esc(name)}" width="{round(dh * w / h)}" height="{dh}" '
+            f'style="--h:{dh}" loading="lazy" decoding="async">')
+
+def client_cards(clients):
+    return "".join(
+        f'<li class="ccard rv"><div class="ccard__logo">{logo_img(name, slug, style)}</div>'
+        f'<div class="ccard__meta"><b>{name}</b><span>{what}</span></div><span class="ccard__ind">{ind}</span></li>'
+        for name, slug, style, ind, what in clients)
+
+def logo_items(clients):
     items = ""
-    for name, slug, style in CLIENTS:
+    for name, slug, style, *_ in clients:
         rel = f"assets/img/clients/{slug}.png"
         if os.path.exists(os.path.join(OUT, rel)):
             w, h = _png_size(rel)
@@ -209,13 +225,23 @@ def logo_strip():
             dh = max(18, min(40, round((4200 / (w / h)) ** 0.5)))
             dh = round(dh * LOGO_BOOST.get(slug, 1))
             items += (f'<li class="wm wm--img"><img src="/{rel}?v={_v(rel)}" alt="{esc(name)}" '
-                      f'width="{round(dh * w / h)}" height="{dh}" loading="lazy" decoding="async"></li>')
+                      f'width="{round(dh * w / h)}" height="{dh}" style="--h:{dh}" loading="lazy" decoding="async"></li>')
         else:
             items += f'<li class="wm wm--{style}">{name}</li>'
+    return items
 
+# the home page shows a handful; the portfolio page shows every client
+HOME_CLIENTS = ["bonobos", "article", "janie-and-jack", "teachable", "mirakl"]
+
+def logo_strip():
+    few = [c for slug in HOME_CLIENTS for c in CLIENTS if c[1] == slug]
     return f"""<section class="logos" aria-labelledby="logos-t">
-<div class="wrap"><h2 class="logos__t" id="logos-t">Brands we&rsquo;ve worked with</h2></div>
-<div class="logos__rail marquee"><ul class="marquee__track logos__track">{items}</ul></div>
+<div class="wrap">
+<h2 class="logos__t" id="logos-t">Brands we&rsquo;ve worked with</h2>
+<ul class="logos__grid logos__grid--few">{logo_items(few)}</ul>
+<p class="logos__ctx">{len(CLIENTS)} brands across {" &middot; ".join(dict.fromkeys(esc(c[3].lower()) for c in CLIENTS))}</p>
+<p class="logos__more"><a class="tlink" href="/work/#clients">See all brands &rarr;</a></p>
+</div>
 </section>"""
 
 def eyebrow(t, plain=False):
@@ -516,7 +542,7 @@ def phero(trail, title, lead, meta=None, cta=True):
 
 # ================================================================ WORK
 def build_work():
-    trail = [("Work", "/work/")]
+    trail = [("Portfolio", "/work/")]
     html = head("Work — Concept Campaigns & Case Studies | Afterscroll Studio",
                 "Clearly labelled concept projects, illustrative growth scenarios and anonymized client examples across e-commerce, beauty, fashion, apps and hospitality.",
                 "/work/", extra_ld=bc_ld(trail))
@@ -527,7 +553,16 @@ def build_work():
                   meta=[("Concept projects", "4 speculative campaigns"), ("Illustrative", "1 full growth rebuild"),
                         ("Anonymized", "1 multi-location example"), ("Verified client metrics", "Shared under NDA on request")])
     html += f"""
-<section class="sec sec--tight"><div class="wrap"><div class="work">{work_cards(CASES)}</div></div></section>
+<section class="sec sec--tight" id="clients"><div class="wrap">
+<div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Clients")}<h2 class="h2 rv" data-split>Brands we&rsquo;ve worked with.</h2></div><p class="lead rv">From DTC health and apparel to mortgage, insurance and B2B software &mdash; consumer brands and enterprise platforms alike.</p></div>
+<div class="cstats rv">
+<div><b>{len(CLIENTS)}</b><span>Brands</span></div>
+<div><b>{len(set(c[3] for c in CLIENTS))}</b><span>Industries</span></div>
+<div><b>B2C + B2B</b><span>Consumer &amp; enterprise</span></div>
+</div>
+<ul class="ccards">{client_cards(CLIENTS)}</ul>
+</div></section>
+<section class="sec sec--tight"><div class="wrap">{eyebrow("Case studies")}<div class="work">{work_cards(CASES)}</div></div></section>
 <section class="sec sec--ink2"><div class="wrap two">
 <div class="stack">{eyebrow("How to read this")}<h2 class="h2 rv" data-split>Labels, not loopholes.</h2></div>
 <div class="stack">
@@ -541,7 +576,7 @@ def build_work():
     write("/work/", html, "0.9", "monthly")
 
 def build_case(c):
-    trail = [("Work", "/work/"), (c["brand"], f"/work/{c['slug']}/")]
+    trail = [("Portfolio", "/work/"), (c["brand"], f"/work/{c['slug']}/")]
     chapters = [
         ("01", "Overview", [c["summary"], f"<strong>Type:</strong> {c['kind']}. <strong>Industry:</strong> {c['industry']}. <strong>Year:</strong> {c['year']}."]),
         ("02", "The challenge", [c["challenge"]]),

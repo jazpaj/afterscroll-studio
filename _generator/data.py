@@ -8,7 +8,7 @@ IG_HANDLE = "@afterscrollstudio"
 EMAIL = "hello@afterscrollstudio.com"
 
 NAV = [
-    ("Work", "/work/"),
+    ("Portfolio", "/work/"),
     ("Services", "/services/"),
     ("Staffing", "/staffing/"),
     ("Solutions", "/solutions/"),
@@ -17,13 +17,20 @@ NAV = [
     ("Contact", "/contact/"),
 ]
 
-# past clients shown in the home logo strip (confirmed by the owner 2026-09-28).
-# (display name, logo slug in assets/img/clients/, fallback wordmark style if no file yet)
+# past clients (confirmed by the owner 2026-09-28).
+# (display name, logo slug in assets/img/clients/, fallback wordmark style, industry group, what the brand does)
+# Only facts about the brands themselves live here: no results or scope are attributed without owner-supplied detail.
 CLIENTS = [
-    ("Phoenix Pharmaceuticals", "phoenix-peptide", "serif"), ("SkinnyRx", "skinnyrx", "bold"),
-    ("Article", "article", "lower"), ("Bonobos", "bonobos", "caps"), ("Halara", "halara", "wide"),
-    ("Janie and Jack", "janie-and-jack", "serif"), ("AD Mortgage", "ad-mortgage", "bold"),
-    ("Teachable", "teachable", "lower"), ("Higginbotham", "higginbotham", "caps"), ("Mirakl", "mirakl", "lower"),
+    ("Phoenix Pharmaceuticals", "phoenix-peptide", "serif", "Health & wellness", "Peptide research products"),
+    ("SkinnyRx", "skinnyrx", "bold", "Health & wellness", "Telehealth weight management"),
+    ("Article", "article", "lower", "Home", "Direct-to-consumer furniture"),
+    ("Bonobos", "bonobos", "caps", "Apparel", "Menswear"),
+    ("Janie and Jack", "janie-and-jack", "serif", "Apparel", "Children's clothing"),
+    ("Halara", "halara", "wide", "Apparel", "Activewear"),
+    ("AD Mortgage", "ad-mortgage", "bold", "Financial services", "Mortgage lending"),
+    ("Teachable", "teachable", "lower", "Software", "Online course platform"),
+    ("Higginbotham", "higginbotham", "caps", "Financial services", "Insurance & financial services"),
+    ("Mirakl", "mirakl", "lower", "Software", "B2B marketplace platform"),
 ]
 
 VERTICAL_MARQUEE = ["E-COMMERCE","DTC","SAAS","BEAUTY","FASHION","HOSPITALITY","REAL ESTATE",
