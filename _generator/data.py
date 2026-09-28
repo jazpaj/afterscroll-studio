@@ -5,7 +5,7 @@ SITE = "Afterscroll Studio"
 BASE = "https://afterscrollstudio.com"
 IG = "https://www.instagram.com/afterscrollstudio"
 IG_HANDLE = "@afterscrollstudio"
-EMAIL = "hello@afterscrollstudio.com"
+EMAIL = "inquiry@afterscrollstudio.com"
 
 NAV = [
     ("Portfolio", "/work/"),
