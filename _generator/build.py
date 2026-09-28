@@ -573,6 +573,11 @@ def build_work():
 </div></section>
 </main>"""
     html += footer()
+    # this *is* the portfolio: drop the self-links from the hero and footer CTAs
+    for btn in ('<a class="btn" href="/work/"><span>See our portfolio</span></a>',
+                '<a class="btn btn--lg" href="/work/"><span>See our portfolio</span></a>'):
+        assert btn in html
+        html = html.replace(btn, "")
     write("/work/", html, "0.9", "monthly")
 
 def build_case(c):
