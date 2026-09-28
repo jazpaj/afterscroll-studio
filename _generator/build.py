@@ -405,7 +405,7 @@ def build_home():
 <section class="sec">
 <div class="wrap">
 <div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
-<div>{eyebrow("Why Afterscroll")}<h2 class="h1 rv" data-split>50+ specialists. One in-house team.</h2></div>
+<div>{eyebrow("Why Afterscroll")}<h2 class="h1 rv" data-split>Built in-house. Built to perform.</h2></div>
 <p class="lead rv">Most agencies outsource the work you're paying for. We don't. Our entire team is hired, trained and managed in-house in the US &mdash; so the quality, speed and accountability stay with us.</p>
 </div>
 <div class="grid grid-4">{whyh}</div>
