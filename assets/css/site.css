@@ -163,7 +163,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 .burger i:last-child{width:17px}
 body.menu-open .burger i:first-child{transform:translateY(6.5px) rotate(45deg)}
 body.menu-open .burger i:last-child{width:26px;transform:translateY(-6.5px) rotate(-45deg)}
-.nav__right{display:flex;align-items:center;gap:.6rem;flex:none}
+.nav__right{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:.6rem;flex:none}
+/* staffing pill and Let's talk share one size: same height, font, padding; the grid gives them equal widths */
+.nav__right > .nav__pill,.nav__right > .nav__cta{height:48px;padding:0 1rem;justify-content:center;gap:.5rem;border-radius:999px;
+  font-family:var(--font-mono);font-size:var(--step--1);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.nav__live{width:7px;height:7px;border-radius:50%;background:#fff;flex:none;animation:pulse 2.4s infinite}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.nav__live{animation:none}}
 .pill.nav__pill{display:none;white-space:nowrap}
 @media (min-width:1160px){
   .nav__links,.nav__cta{display:flex}

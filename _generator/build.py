@@ -137,7 +137,7 @@ def nav():
 {LOGO}
 <nav class="nav__links" aria-label="Primary">{links}</nav>
 <div class="nav__right">
-<a class="pill pill--cta nav__pill" href="/staffing/"><b>New</b>VA staffing <span aria-hidden="true">&rarr;</span></a>
+<a class="pill pill--cta nav__pill" href="/staffing/"><i class="nav__live" aria-hidden="true"></i><span class="sr">New: </span>VA staffing <span aria-hidden="true">&rarr;</span></a>
 <a class="btn btn--volt nav__cta" href="/contact/"><span>Let's talk &rarr;</span></a>
 </div>
 <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
