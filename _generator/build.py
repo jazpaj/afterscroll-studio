@@ -242,7 +242,7 @@ def logo_strip():
 <h2 class="logos__t" id="logos-t">Brands we&rsquo;ve worked with</h2>
 <ul class="logos__grid logos__grid--few">{logo_items(few)}</ul>
 <p class="logos__ctx">We&rsquo;ve worked with 30+ brands across health, apparel, home, finance and software.</p>
-<p class="logos__more"><a class="tlink" href="/work/#clients">See all brands &rarr;</a></p>
+<p class="logos__more"><a class="tlink" href="/work/#clients">See other brands &rarr;</a></p>
 </div>
 </section>"""
 
