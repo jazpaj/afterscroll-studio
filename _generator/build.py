@@ -576,11 +576,6 @@ def build_work():
     html += f"""
 <section class="sec sec--tight" id="clients"><div class="wrap">
 <div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Clients")}<h2 class="h2 rv" data-split>Brands we&rsquo;ve worked with.</h2></div><p class="lead rv">A selection of the 30+ brands we&rsquo;ve worked with, from DTC health and apparel to mortgage, insurance and B2B software.</p></div>
-<div class="cstats rv">
-<div><b>30+</b><span>Brands worked with</span></div>
-<div><b>{len(set(c[3] for c in CLIENTS))}</b><span>Industries</span></div>
-<div><b>B2C + B2B</b><span>Consumer &amp; enterprise</span></div>
-</div>
 <ul class="ccards">{client_cards(CLIENTS)}<li class="ccard ccard--more rv"><h3 class="ccard__moret">Plus many more brands</h3><a class="tlink" href="/contact/">Be the next one &rarr;</a></li></ul>
 </div></section>
 <section class="sec sec--tight"><div class="wrap">{eyebrow("Case studies")}<div class="work">{work_cards(CASES)}</div></div></section>
