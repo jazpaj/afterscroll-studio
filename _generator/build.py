@@ -241,7 +241,7 @@ def logo_strip():
 <div class="wrap">
 <h2 class="logos__t" id="logos-t">Brands we&rsquo;ve worked with</h2>
 <ul class="logos__grid logos__grid--few">{logo_items(few)}</ul>
-<p class="logos__ctx">{len(CLIENTS)} brands across {" &middot; ".join(dict.fromkeys(esc(c[3].lower()) for c in CLIENTS))}</p>
+<p class="logos__ctx">We&rsquo;ve worked with 30+ brands across health, apparel, home, finance and software.</p>
 <p class="logos__more"><a class="tlink" href="/work/#clients">See all brands &rarr;</a></p>
 </div>
 </section>"""
@@ -555,9 +555,9 @@ def build_work():
                         ("Anonymized", "1 multi-location example"), ("Verified client metrics", "Shared under NDA on request")])
     html += f"""
 <section class="sec sec--tight" id="clients"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Clients")}<h2 class="h2 rv" data-split>Brands we&rsquo;ve worked with.</h2></div><p class="lead rv">From DTC health and apparel to mortgage, insurance and B2B software &mdash; consumer brands and enterprise platforms alike.</p></div>
+<div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Clients")}<h2 class="h2 rv" data-split>Brands we&rsquo;ve worked with.</h2></div><p class="lead rv">A selection of the 30+ brands we&rsquo;ve worked with, from DTC health and apparel to mortgage, insurance and B2B software.</p></div>
 <div class="cstats rv">
-<div><b>{len(CLIENTS)}</b><span>Brands</span></div>
+<div><b>30+</b><span>Brands worked with</span></div>
 <div><b>{len(set(c[3] for c in CLIENTS))}</b><span>Industries</span></div>
 <div><b>B2C + B2B</b><span>Consumer &amp; enterprise</span></div>
 </div>
