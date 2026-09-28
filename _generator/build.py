@@ -212,8 +212,10 @@ def logo_img(name, slug, style):
 def client_cards(clients):
     return "".join(
         f'<li class="ccard rv"><div class="ccard__logo">{logo_img(name, slug, style)}</div>'
-        f'<div class="ccard__meta"><b>{name}</b><span>{what}</span></div><span class="ccard__ind">{ind}</span></li>'
-        for name, slug, style, ind, what in clients)
+        f'<div class="ccard__meta"><b>{name}</b><span>{what}</span></div><span class="ccard__ind">{ind}</span>'
+        f'<div class="ccard__svc"><span class="ccard__svcl">Services</span>'
+        f'<div class="tagcloud">{"".join(f"<span class=chip>{x}</span>" for x in svc)}</div></div></li>'
+        for name, slug, style, ind, what, svc in clients)
 
 def logo_items(clients):
     items = ""

@@ -698,3 +698,6 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 .ccard__ind{grid-area:ind;align-self:start;padding:.3rem .65rem;border:1px solid var(--line);border-radius:999px;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--volt);white-space:nowrap}
 .wm__txt{font-size:1.2rem;color:var(--ivory-faint)}
 @media (max-width:420px){.cstats b{font-size:var(--step-1)}}
+.ccard{grid-template-areas:"logo logo" "meta ind" "svc svc"}
+.ccard__svc{grid-area:svc;display:flex;flex-direction:column;gap:.5rem;padding-top:12px;border-top:1px solid var(--line)}
+.ccard__svcl{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-faint)}

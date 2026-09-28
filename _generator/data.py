@@ -17,20 +17,30 @@ NAV = [
     ("Contact", "/contact/"),
 ]
 
-# past clients (confirmed by the owner 2026-09-28).
-# (display name, logo slug in assets/img/clients/, fallback wordmark style, industry group, what the brand does)
-# Only facts about the brands themselves live here: no results or scope are attributed without owner-supplied detail.
+# past clients (confirmed by the owner 2026-09-28); services per client supplied by the owner 2026-09-28.
+# (display name, logo slug in assets/img/clients/, fallback wordmark style, industry group, what the brand does, services)
+# No results/metrics are attributed to named clients.
 CLIENTS = [
-    ("Phoenix Pharmaceuticals", "phoenix-peptide", "serif", "Health & wellness", "Peptide research products"),
-    ("SkinnyRx", "skinnyrx", "bold", "Health & wellness", "Telehealth weight management"),
-    ("Article", "article", "lower", "Home", "Direct-to-consumer furniture"),
-    ("Bonobos", "bonobos", "caps", "Apparel", "Menswear"),
-    ("Janie and Jack", "janie-and-jack", "serif", "Apparel", "Children's clothing"),
-    ("Halara", "halara", "wide", "Apparel", "Activewear"),
-    ("AD Mortgage", "ad-mortgage", "bold", "Financial services", "Mortgage lending"),
-    ("Teachable", "teachable", "lower", "Software", "Online course platform"),
-    ("Higginbotham", "higginbotham", "caps", "Financial services", "Insurance & financial services"),
-    ("Mirakl", "mirakl", "lower", "Software", "B2B marketplace platform"),
+    ("Phoenix Pharmaceuticals", "phoenix-peptide", "serif", "Health & wellness", "Peptide research products",
+     ["Paid Media", "Landing Page Optimization", "SEO"]),
+    ("SkinnyRx", "skinnyrx", "bold", "Health & wellness", "Telehealth weight management",
+     ["Paid Social", "Creative Strategy", "CRO", "Retention"]),
+    ("Article", "article", "lower", "Home", "Direct-to-consumer furniture",
+     ["Performance Creative", "Paid Social", "Website CRO"]),
+    ("Bonobos", "bonobos", "caps", "Apparel", "Menswear",
+     ["Creative", "Paid Media", "Email Retention"]),
+    ("Janie and Jack", "janie-and-jack", "serif", "Apparel", "Children's clothing",
+     ["Social Creative", "Ecommerce Optimization", "Retargeting"]),
+    ("Halara", "halara", "wide", "Apparel", "Activewear",
+     ["UGC Creative", "Paid Social", "Conversion Optimization"]),
+    ("AD Mortgage", "ad-mortgage", "bold", "Financial services", "Mortgage lending",
+     ["Lead Generation", "Paid Search", "CRM Automation"]),
+    ("Teachable", "teachable", "lower", "Software", "Online course platform",
+     ["Content Strategy", "Search", "Paid Acquisition"]),
+    ("Higginbotham", "higginbotham", "caps", "Financial services", "Insurance & financial services",
+     ["SEO", "Local Search", "Lead Generation", "Web CRO"]),
+    ("Mirakl", "mirakl", "lower", "Software", "B2B marketplace platform",
+     ["B2B Demand Generation", "LinkedIn", "Content", "CRO"]),
 ]
 
 VERTICAL_MARQUEE = ["E-COMMERCE","DTC","SAAS","BEAUTY","FASHION","HOSPITALITY","REAL ESTATE",
