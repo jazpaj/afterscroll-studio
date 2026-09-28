@@ -6,7 +6,6 @@ BASE = "https://afterscrollstudio.com"
 IG = "https://www.instagram.com/afterscrollstudio"
 IG_HANDLE = "@afterscrollstudio"
 EMAIL = "hello@afterscrollstudio.com"
-LINKEDIN = "https://www.linkedin.com/company/afterscrollstudio"
 
 NAV = [
     ("Work", "/work/"),

@@ -75,7 +75,7 @@ def head(title, desc, path, og_kind="website", extra_ld=None, robots=None):
         "name": SITE,
         "url": BASE,
         "description": "Afterscroll Studio is a global creative growth agency combining culture, content, performance media, AI and technology.",
-        "sameAs": [IG, LINKEDIN],
+        "sameAs": [IG],
         "email": EMAIL,
         "areaServed": "Worldwide",
         "knowsAbout": ["Performance marketing", "Creative strategy", "Paid social advertising",
@@ -173,7 +173,6 @@ def footer(sticky=True):
 <div class="foot__col"><h4>Services</h4><ul>{svc}</ul></div>
 <div class="foot__col"><h4>Connect</h4><ul>
 <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-<li><a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></li>
 <li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li></ul></div>
 </div>
 <div class="foot__bottom">
@@ -848,7 +847,7 @@ def build_contact():
 <div class="wrap">{crumbs(trail)}
 <h1 class="phero__t"><span class="rv-line"><span>Let's build something people can't ignore.</span></span></h1>
 <div class="phero__grid"><p class="lead rv">Tell us where you are and what you're trying to move. You'll hear back from a person who has read it &mdash; usually within one working day.</p>
-<div class="stack"><a class="tlink rv" href="mailto:{EMAIL}">{EMAIL}</a><a class="tlink rv" href="{IG}" target="_blank" rel="noopener" aria-label="Afterscroll Studio on Instagram">{IG_ICON} Instagram</a><a class="tlink rv" href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></div></div>
+<div class="stack"><a class="tlink rv" href="mailto:{EMAIL}">{EMAIL}</a><a class="tlink rv" href="{IG}" target="_blank" rel="noopener" aria-label="Afterscroll Studio on Instagram">{IG_ICON} Instagram</a></div></div>
 </div></section>
 <section class="sec sec--tight"><div class="wrap">
 <div class="two two--l" style="align-items:start">

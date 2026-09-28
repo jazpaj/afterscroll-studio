@@ -96,8 +96,8 @@ current `BASE_PATH` baked into every link — if you point a custom domain at th
 2. **Contact form** — `#intake` is currently front-end only: it validates, shows a success state and
    sends nothing. Point it at your form handler or CRM endpoint (Formspree, Netlify Forms, HubSpot,
    your own API) in `_generator/build.py` → `build_contact()`.
-3. **Email & LinkedIn** — `hello@afterscrollstudio.com` and the LinkedIn URL in `data.py` are
-   placeholders. The Instagram link is real.
+3. **Email** — `hello@afterscrollstudio.com` in `data.py` is a placeholder. The Instagram link is
+   real. (LinkedIn was removed from the site on 2026-09-28.)
 4. **OG image** — `assets/img/og.svg` works, but some platforms only accept raster. Export a
    1200×630 PNG and swap the two `og:image` / `twitter:image` references in `build.py` → `head()`.
 5. **Delete or exclude `_generator/`** from the deployed directory if you'd rather not publish the
