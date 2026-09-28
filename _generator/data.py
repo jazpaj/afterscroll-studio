@@ -10,6 +10,7 @@ EMAIL = "hello@afterscrollstudio.com"
 NAV = [
     ("Work", "/work/"),
     ("Services", "/services/"),
+    ("Staffing", "/staffing/"),
     ("Solutions", "/solutions/"),
     ("Insights", "/insights/"),
     ("About", "/about/"),
@@ -1223,4 +1224,57 @@ ARTICLES += [
   ("p","One canonical conversion definition, server-side events, clean UTM discipline, and structured data on products. If the site can't tell you which page and which angle produced revenue, you'll be guessing forever."),
   ("box",("A good standard to hold","Mobile LCP under 2.5s, checkout under three steps, product page answers the top five objections without a click, and every ad angle has a matching destination.")),
  ]},
+]
+
+
+# ---------------------------------------------------------------- VA staffing
+# (group, role, what they own, typical tasks)
+STAFF_ROLES = [
+    ("Creative", "Creative Strategist",
+     "Researches your audience, mines reviews and comments, and turns what customers actually say into hooks, briefs and testing plans.",
+     ["Ad concepts & hooks", "Creative briefs", "Competitor teardowns", "Testing roadmaps"]),
+    ("Creative", "Video Editor",
+     "Cuts short-form ads and organic content for every platform, from raw UGC to polished, captioned edits.",
+     ["Short-form ad edits", "Platform cutdowns", "UGC editing", "Captions & subtitles"]),
+    ("Creative", "Graphic Designer",
+     "Produces static ads, social graphics and landing page assets that stay on-brand at volume.",
+     ["Static ad variations", "Social posts", "Landing page assets", "Brand templates"]),
+    ("Growth & ops", "Ads Operator / Media Buyer",
+     "Builds and runs campaigns day to day across Meta, Google and TikTok, with clean naming, pacing and reporting.",
+     ["Campaign builds", "Daily optimization", "Budget pacing", "Performance reports"]),
+    ("Growth & ops", "E-commerce Operator",
+     "Keeps your store running: listings, promotions, inventory and orders across Shopify, Amazon and marketplaces.",
+     ["Product listings", "Promotions & merchandising", "Inventory updates", "Order management"]),
+    ("Growth & ops", "Social & Community Manager",
+     "Schedules content, answers comments and DMs, and keeps your community active and on-brand.",
+     ["Content scheduling", "Comment & DM replies", "Community engagement", "Trend monitoring"]),
+    ("Growth & ops", "Operations Coordinator",
+     "Turns messy processes into SOPs and keeps projects, vendors and deadlines moving.",
+     ["SOP documentation", "Task & project tracking", "Vendor coordination", "Weekly reporting"]),
+    ("Customer experience", "Customer Support Specialist",
+     "Handles email, chat and phone support with your tone of voice, from order questions to returns.",
+     ["Email & live chat", "Phone support", "Returns & refunds", "Helpdesk management"]),
+    ("Customer experience", "Sales & Appointment Setter",
+     "Follows up on every lead, keeps your CRM clean and fills your calendar with qualified calls.",
+     ["Lead follow-up", "Outbound outreach", "Call booking", "CRM hygiene"]),
+    ("Admin & back office", "Executive Assistant",
+     "Owns the inbox, calendar and the hundred small tasks that pull founders and managers away from real work.",
+     ["Inbox & calendar", "Travel & scheduling", "Research", "Documents & prep"]),
+    ("Admin & back office", "Bookkeeping & Data Assistant",
+     "Keeps the numbers tidy: invoices, reconciliations, data entry and the reports your team relies on.",
+     ["Invoicing", "Reconciliations", "Data entry", "Report prep"]),
+]
+
+STAFF_STEPS = [
+    ("Map the roles", "We look at how your business runs today and pinpoint which roles and tasks a skilled VA can own, from a single seat to a full team."),
+    ("Source & vet", "We recruit for the exact role and screen candidates with skills tests, trial tasks and interviews before you meet them."),
+    ("Train & onboard", "Your VAs learn your tools, SOPs and brand voice before they take on live work, so they're useful from the first week."),
+    ("Manage & scale", "We handle day-to-day management and performance, and re-match any seat that isn't the right fit, so you can add roles as you grow."),
+]
+
+STAFF_WHY = [
+    ("Skilled, not generic", "We staff specialist roles like creative strategists, ads operators and support leads, not just task-takers."),
+    ("Backed by a growth agency", "Creative and marketing VAs work from the same playbooks our in-house agency team uses every day."),
+    ("Managed for you", "Sourcing, vetting, training and ongoing management are handled by us, so your team keeps its focus."),
+    ("Flexible by design", "Start with one role, fill every open seat, or cover a single function end to end. Adjust as your needs change."),
 ]

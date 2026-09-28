@@ -166,7 +166,7 @@ def footer(sticky=True):
 <div class="socials">{ig_link()}</div>
 </div>
 <div class="foot__col"><h4>Navigate</h4><ul>
-<li><a href="/work/">Work</a></li><li><a href="/services/">Services</a></li>
+<li><a href="/work/">Work</a></li><li><a href="/services/">Services</a></li><li><a href="/staffing/">Staffing</a></li>
 <li><a href="/solutions/">Solutions</a></li><li><a href="/industries/">Industries</a></li>
 <li><a href="/insights/">Insights</a></li><li><a href="/about/">About</a></li>
 <li><a href="/contact/">Contact</a></li></ul></div>
@@ -450,6 +450,20 @@ def build_home():
 </div>
 </section>
 
+<section class="sec sec--tight">
+<div class="wrap">
+<div class="staff-band rv">
+<div class="stack">
+<p class="eyebrow staff-band__eb">VA Staffing</p>
+<h2 class="h2">Skilled VAs for every seat in your business.</h2>
+<p class="staff-band__lead">We step into your business, map the roles, and fill them with trained virtual assistants &mdash; creative strategists, ads operators, customer support and more. Sourced, vetted and managed by us.</p>
+<div class="btn-row"><a class="btn staff-band__btn" href="/staffing/"><span>Explore staffing &rarr;</span></a></div>
+</div>
+<ul class="staff-band__roles">{"".join(f"<li>{r}</li>" for _, r, _, _ in STAFF_ROLES[:8])}<li>+ more roles</li></ul>
+</div>
+</div>
+</section>
+
 <section class="sec" id="work">
 <div class="wrap">
 <div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
@@ -681,6 +695,48 @@ def build_service(s):
     html += footer()
     write(f"/services/{s['slug']}/", html, "0.8")
 
+# ================================================================ STAFFING
+def build_staffing():
+    trail = [("Staffing", "/staffing/")]
+    groups = []
+    for g in dict.fromkeys(r[0] for r in STAFF_ROLES):
+        cards = "".join(
+            f'<div class="card rv"><h3 class="card__t">{role}</h3><p class="card__d">{d}</p>'
+            f'<div class="tagcloud">{"".join(f"<span class=chip>{t}</span>" for t in tasks)}</div></div>'
+            for gg, role, d, tasks in STAFF_ROLES if gg == g)
+        groups.append(f'<div class="staff-group"><h3 class="staff-group__t mono">{g}</h3><div class="grid grid-3">{cards}</div></div>')
+    steps = "".join(f'<div class="card rv"><span class="card__n">{i:02d}</span><h3 class="card__t">{t}</h3><p class="card__d">{d}</p></div>'
+                    for i, (t, d) in enumerate(STAFF_STEPS, 1))
+    why = "".join(f'<div class="card rv"><span class="card__n">{i:02d}</span><h3 class="card__t">{t}</h3><p class="card__d">{d}</p></div>'
+                  for i, (t, d) in enumerate(STAFF_WHY, 1))
+    html = head("VA Staffing — Skilled Virtual Assistants | Afterscroll Studio",
+                "Fill every role with skilled, managed virtual assistants: creative strategists, ads operators, customer support, e-commerce operators and admin.",
+                "/staffing/", extra_ld=bc_ld(trail))
+    html += nav() + "<main id=\"main\">"
+    html += phero(trail, "Skilled VAs for every seat.",
+                  "Afterscroll is also a staffing partner. We go into your business, map how it runs, and fill open or overloaded roles with well-trained virtual assistants &mdash; from creative strategists and ads operators to customer support and admin. We source, vet, train and manage them, so you get the output without the hiring headache.",
+                  meta=[("Roles", "Creative, growth, support, admin"), ("Model", "Dedicated VAs"),
+                        ("Managed by", "Afterscroll"), ("Scale", "One seat to full teams")])
+    html = html.replace('<span>See our portfolio</span></a></div>', '<span>See the roles</span></a></div>', 1).replace('<a class="btn" href="/work/"><span>See the roles</span>', '<a class="btn" href="#roles"><span>See the roles</span>', 1)
+    html += f"""
+<section class="sec sec--tight" id="roles"><div class="wrap">
+<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Roles we fill")}<h2 class="h1 rv" data-split>Every seat, filled with the right skills.</h2></div><p class="lead rv">Pick one role or staff an entire function. Every VA is matched to the job, not pulled from a generic pool.</p></div>
+<div class="stack-lg">{"".join(groups)}</div>
+<p class="form__note rv" style="margin-top:1.4rem">Need a role that isn&rsquo;t listed? Tell us what the job looks like and we&rsquo;ll scope it.</p>
+</div></section>
+<section class="sec sec--ink2"><div class="wrap">
+<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("How it works")}<h2 class="h1 rv" data-split>From open role to productive VA.</h2></div><p class="lead rv">We handle the whole process, so your team never has to run a hiring pipeline.</p></div>
+<div class="grid grid-4">{steps}</div>
+</div></section>
+<section class="sec"><div class="wrap">
+<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Why Afterscroll staffing")}<h2 class="h1 rv" data-split>More than a VA marketplace.</h2></div></div>
+<div class="grid grid-4">{why}</div>
+<div class="btn-row rv" style="margin-top:clamp(28px,3.5vw,48px)"><a class="btn btn--volt btn--lg" href="/contact/"><span>Staff a role &rarr;</span></a><a class="btn btn--lg" href="/services/"><span>Agency services</span></a></div>
+</div></section>
+</main>"""
+    html += footer()
+    write("/staffing/", html, "0.9")
+
 # ================================================================ SOLUTIONS
 def build_solutions():
     trail = [("Solutions", "/solutions/")]
@@ -858,7 +914,7 @@ def build_about():
 def build_contact():
     trail = [("Contact", "/contact/")]
     multis = ["Creative","Paid Ads","UGC","Influencers","SEO","GEO","Branding","Website",
-              "Email/SMS","AI Automation","Account Recovery","Analytics","Strategy","Other"]
+              "Email/SMS","AI Automation","Account Recovery","Analytics","Strategy","VA Staffing","Other"]
     checks = "".join(f'<label class="check"><input type="checkbox" name="help" value="{m}"><span>{m}</span></label>' for m in multis)
     inds = "".join(f'<option>{n}</option>' for _, n, _, _, _, _ in INDUSTRIES)
     budgets = ["Under $2.5k / month","$2.5k – $5k / month","$5k – $10k / month","$10k – $25k / month",
@@ -1112,6 +1168,7 @@ def main():
     build_services()
     for s in SERVICES:
         build_service(s)
+    build_staffing()
     build_solutions()
     build_industries()
     for i, ind in enumerate(INDUSTRIES):

@@ -669,3 +669,17 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
   .logos__track{animation:none;min-width:0;flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(18px,2.4vw,36px) clamp(24px,3vw,48px);padding:0;justify-items:center}
   .logos__track + .logos__track{display:none}
 }
+
+/* ---------- staffing ---------- */
+.staff-band{display:grid;gap:clamp(24px,3.5vw,56px);align-items:center;padding:clamp(26px,4vw,64px);border-radius:24px;background:var(--volt);color:#fff;--ivory-faint:rgba(255,255,255,.78);--line:rgba(255,255,255,.28)}
+@media (min-width:920px){.staff-band{grid-template-columns:1.15fr 1fr}}
+.staff-band .eyebrow::before{background:#fff}
+.staff-band__eb{margin-bottom:.4rem}
+.staff-band__lead{font-size:var(--step-1);line-height:1.45;color:rgba(255,255,255,.88);max-width:52ch}
+.staff-band__btn{background:#fff;color:var(--volt);border-color:#fff}
+.staff-band__btn::after{background:var(--ivory)}
+.staff-band__btn:hover{color:#fff;border-color:var(--ivory)}
+.staff-band__roles{display:flex;flex-wrap:wrap;gap:8px}
+.staff-band__roles li{padding:.55rem .9rem;border:1px solid rgba(255,255,255,.34);border-radius:999px;font-size:.92rem;font-weight:500}
+.staff-band__roles li:last-child{border-style:dashed}
+.staff-group__t{color:var(--volt);margin-bottom:1rem}
