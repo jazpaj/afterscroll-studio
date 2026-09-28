@@ -191,6 +191,33 @@ def marquee(items, cls="", big=False):
     inner = "".join(f'<span class="marquee__item">{i}</span>' for i in items)
     return f'<div class="marquee {cls}{" marquee--big" if big else ""}" aria-hidden="true"><div class="marquee__track">{inner}</div></div>'
 
+def _png_size(rel):
+    with open(os.path.join(OUT, rel), "rb") as f:
+        head = f.read(24)
+    return int.from_bytes(head[16:20], "big"), int.from_bytes(head[20:24], "big")
+
+# marks whose wordmark is small relative to their icon need a nudge to read at strip size
+LOGO_BOOST = {"phoenix-peptide": 1.5}
+
+def logo_strip():
+    items = ""
+    for name, slug, style in CLIENTS:
+        rel = f"assets/img/clients/{slug}.png"
+        if os.path.exists(os.path.join(OUT, rel)):
+            w, h = _png_size(rel)
+            # equal visual weight: constant area, so wide marks get shorter and compact ones taller
+            dh = max(18, min(40, round((4200 / (w / h)) ** 0.5)))
+            dh = round(dh * LOGO_BOOST.get(slug, 1))
+            items += (f'<li class="wm wm--img"><img src="/{rel}?v={_v(rel)}" alt="{esc(name)}" '
+                      f'width="{round(dh * w / h)}" height="{dh}" loading="lazy" decoding="async"></li>')
+        else:
+            items += f'<li class="wm wm--{style}">{name}</li>'
+
+    return f"""<section class="logos" aria-labelledby="logos-t">
+<div class="wrap"><h2 class="logos__t" id="logos-t">Brands we&rsquo;ve worked with</h2></div>
+<div class="logos__rail marquee"><ul class="marquee__track logos__track">{items}</ul></div>
+</section>"""
+
 def eyebrow(t, plain=False):
     return f'<p class="eyebrow{" eyebrow--plain" if plain else ""}">{t}</p>'
 
@@ -400,7 +427,7 @@ def build_home():
 </div>
 </section>
 
-{marquee(VERTICAL_MARQUEE)}
+{logo_strip()}
 
 <section class="sec">
 <div class="wrap">

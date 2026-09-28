@@ -16,6 +16,15 @@ NAV = [
     ("Contact", "/contact/"),
 ]
 
+# past clients shown in the home logo strip (confirmed by the owner 2026-09-28).
+# (display name, logo slug in assets/img/clients/, fallback wordmark style if no file yet)
+CLIENTS = [
+    ("Phoenix Pharmaceuticals", "phoenix-peptide", "serif"), ("SkinnyRx", "skinnyrx", "bold"),
+    ("Article", "article", "lower"), ("Bonobos", "bonobos", "caps"), ("Halara", "halara", "wide"),
+    ("Janie and Jack", "janie-and-jack", "serif"), ("AD Mortgage", "ad-mortgage", "bold"),
+    ("Teachable", "teachable", "lower"), ("Higginbotham", "higginbotham", "caps"), ("Mirakl", "mirakl", "lower"),
+]
+
 VERTICAL_MARQUEE = ["E-COMMERCE","DTC","SAAS","BEAUTY","FASHION","HOSPITALITY","REAL ESTATE",
                     "CONSUMER","TECH","LOCAL BUSINESS","CREATORS","STARTUPS","RESTAURANTS",
                     "HEALTHCARE","CONSTRUCTION","PROFESSIONAL SERVICES"]
