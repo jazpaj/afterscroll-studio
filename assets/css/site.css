@@ -163,8 +163,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 .burger i:last-child{width:17px}
 body.menu-open .burger i:first-child{transform:translateY(6.5px) rotate(45deg)}
 body.menu-open .burger i:last-child{width:26px;transform:translateY(-6.5px) rotate(-45deg)}
+.nav__right{display:flex;align-items:center;gap:.6rem;flex:none}
+.pill.nav__pill{display:none;white-space:nowrap}
 @media (min-width:1160px){
   .nav__links,.nav__cta{display:flex}
+  .pill.nav__pill{display:inline-flex}
+  .pill.hero__staff{display:none}
   .burger{display:none}
 }
 .menu{

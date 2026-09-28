@@ -129,13 +129,17 @@ LOGO = ('<a class="logo" href="/" aria-label="Afterscroll Studio — home">'
         f'<img class="logo__img" src="/assets/img/logo.png?v={LOGO_V}" width="434" height="96" alt="Afterscroll Studio"></a>')
 
 def nav():
-    links = "".join(f'<a href="{href}">{name}</a>' for name, href in NAV)
+    # desktop: the staffing pill beside the CTA stands in for the plain "Staffing" link
+    links = "".join(f'<a href="{href}">{name}</a>' for name, href in NAV if href != "/staffing/")
     mlinks = "".join(f'<a href="{href}">{name}</a>' for name, href in NAV)
     return f"""<header class="nav">
 <div class="wrap nav__in">
 {LOGO}
 <nav class="nav__links" aria-label="Primary">{links}</nav>
+<div class="nav__right">
+<a class="pill pill--cta nav__pill" href="/staffing/"><b>New</b>VA staffing <span aria-hidden="true">&rarr;</span></a>
 <a class="btn btn--volt nav__cta" href="/contact/"><span>Let's talk &rarr;</span></a>
+</div>
 <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
 </div>
 </header>
@@ -427,7 +431,7 @@ def build_home():
 <div class="wrap hero__in">
 <div class="hero__kicker">
 <span class="pill pill--live">Creative growth agency</span>
-<a class="pill pill--cta" href="/staffing/"><b>New</b>VA staffing is now live <span aria-hidden="true">&rarr;</span></a>
+<a class="pill pill--cta hero__staff" href="/staffing/"><b>New</b>VA staffing is now live <span aria-hidden="true">&rarr;</span></a>
 </div>
 <h1 class="hero__title"><span class="ln"><span>Make them</span></span><span class="ln"><span>stop</span></span><span class="ln"><span>scrolling.</span></span></h1>
 <div class="hero__grid">
