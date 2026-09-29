@@ -831,6 +831,9 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
   .tlink{padding-top:.55rem;padding-bottom:.55rem}
   .foot__col ul{gap:.15rem}
   .foot__col a{display:inline-block;padding-block:.4rem}
+  /* Instagram: bare icon on phones (no circle), still a 44px tap area, aligned with the text */
+  .foot__col .social{display:inline-grid;place-items:center start;width:44px;height:44px;padding:0;border:0;border-radius:0}
+  .foot__col .social:hover{background:none;color:var(--volt)}
   /* keep small uppercase labels readable (>=10.5px) */
   .chip,.icard__cat,.ccard__ind,.ccard__svcl,.wcard__label,.wcard__k div,.trend__cat,.trend__mv,.cap__g,
   .disclaim,.metabar div,.foot__col h4,.kpi span,.dash__live,.flow__node i,.creator__row,.icard__m,
