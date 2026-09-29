@@ -656,10 +656,7 @@ def build_case(c):
 <div>Year<b>{c['year']}</b></div><div>Type<b>{c['kind']}</b></div></div>
 </div>
 </section>
-<section class="sec sec--tight"><div class="wrap">
-<div class="case-hero {c['art']} rv-scale"><b>{c['title']}</b></div>
-</div></section>
-<section class="sec sec--tight"><div class="wrap">{body}</div></section>
+<section class="sec sec--tight case-body"><div class="wrap">{body}</div></section>
 <section class="sec sec--ink2"><div class="wrap">
 <div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("More work")}<h2 class="h2 rv" data-split>Keep reading.</h2></div></div>
 <div class="work">{work_cards(others)}</div>
