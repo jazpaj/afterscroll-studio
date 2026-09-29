@@ -179,7 +179,7 @@ def footer(sticky=True):
 </div>
 <div class="foot__col"><h4>Connect</h4><ul>
 <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-<li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li></ul></div>
+<li><a href="/privacy/">Privacy Notice</a></li><li><a href="/terms/">Terms of Use</a></li></ul></div>
 </div>
 <div class="foot__bottom">
 <span>&copy; <span id="year">2026</span> {SITE}. All rights reserved.</span>
@@ -683,7 +683,7 @@ def build_services():
     html += nav() + "<main id=\"main\">"
     html += phero(trail, "We build attention systems.",
                   "From the first impression to the final conversion, our 50+ in-house specialists connect creative, media, technology and measurement into one growth system. Seven capability groups, run as one team.",
-                  meta=[("Capability groups", "7"), ("Engagement models", "5"), ("Productized packages", "6"), ("Industries", "18+")])
+                  divider=True)
     html += f"""<section class="sec sec--tight"><div class="wrap">
 <div class="sec-head" style="margin-bottom:clamp(24px,3vw,44px)"><div>{eyebrow("Full service list")}<h2 class="h2 rv" data-split>Everything we do, in one place.</h2></div><p class="lead rv">Every service our in-house team delivers. Tap any service for scope, process and the numbers we hold it to.</p></div>
 {rows}
@@ -813,7 +813,7 @@ def build_solutions():
     html += nav() + "<main id=\"main\">"
     html += phero(trail, "Ways to work together.",
                   "We don't publish fixed prices, because scope, channels, production volume and speed change the number enormously. What we do publish is exactly how engagements are structured &mdash; and you'll get a straight figure after one conversation.",
-                  meta=[("Engagement models", "5"), ("Productized packages", "6"), ("Customizable", "All of them"), ("Minimum term", "Agreed per scope")])
+                  divider=True)
     html += f"""
 <section class="sec sec--tight"><div class="wrap">
 <div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Engagement models")}<h2 class="h1 rv" data-split>Structure follows the outcome.</h2></div><p class="lead rv">Most partners start on a retainer or a productized program, then expand. Performance-aligned structures require clean measurement on both sides &mdash; we'll tell you honestly whether you have it.</p></div>
@@ -911,8 +911,7 @@ def build_about():
     html += nav() + "<main id=\"main\">"
     html += phero(trail, "We live between culture and conversion.",
                   "Afterscroll Studio exists because advertising, entertainment, creators, commerce, search and AI stopped being separate disciplines. A brand now competes for attention in the same feed as everyone's friends, then has to convert that attention with the discipline of a performance team. Very few companies are built to do both.",
-                  meta=[("Founded on", "Creative × performance × AI"), ("Team", "50+ in-house, US-based"),
-                        ("Disciplines", "6 desks"), ("Instagram", f'<a href="{IG}" target="_blank" rel="noopener" class="ig-inline">{IG_ICON}{IG_HANDLE}</a>')])
+                  divider=True)
     html += f"""
 <section class="sec sec--tight"><div class="wrap two two--l">
 <div class="stack">{eyebrow("Philosophy")}
@@ -1028,6 +1027,10 @@ def build_contact():
 </div></section>
 </main>"""
     html += footer(sticky=False)
+    # already on the contact page: drop the footer CTA that links back here
+    btn = '<a class="btn btn--volt btn--lg" href="/contact/"><span>Grow Your Brand &rarr;</span></a>'
+    assert btn in html
+    html = html.replace(btn, "")
     write("/contact/", html, "0.9")
 
 # ================================================================ INSIGHTS
@@ -1048,7 +1051,7 @@ def build_insights():
     html += nav() + "<main id=\"main\">"
     html += phero(trail, "Afterscroll / Insights.",
                   f"{len(ARTICLES)} practical pieces on the work itself &mdash; paid media, creative, search, AI, retention, analytics and the platform problems nobody warns you about. Written by the desks doing it, not a content farm.",
-                  meta=[("Articles", str(len(ARTICLES))), ("Categories", str(len(cats))), ("Desks", "6"), ("Updated", "26 Sep 2026")], cta=False)
+                  cta=False, divider=True)
     html += f"""
 <section class="sec sec--tight"><div class="wrap" data-insights>
 <div class="filters">
