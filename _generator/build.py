@@ -548,10 +548,12 @@ def build_home():
     html += footer()
     write("/", html, "1.0", "weekly")
 
-def phero(trail, title, lead, meta=None, cta=True):
+def phero(trail, title, lead, meta=None, cta=True, divider=False):
     m = ""
     if meta:
         m = '<div class="metabar rv">' + "".join(f"<div>{k}<b>{v}</b></div>" for k, v in meta) + "</div>"
+    elif divider:
+        m = '<hr class="rule phero__rule">'
     btns = ('<div class="btn-row rv"><a class="btn btn--volt" href="/contact/"><span>Grow Your Brand &rarr;</span></a>'
             '<a class="btn" href="/work/"><span>See our portfolio</span></a></div>') if cta else ""
     return f"""<section class="phero">
@@ -572,7 +574,7 @@ def build_work():
     html += nav()
     html += "<main id=\"main\">"
     html += phero(trail, "Work that moves.",
-                  "A portfolio built for honesty as much as ambition. Concept campaigns show how we'd approach brands we admire. Illustrative scenarios show our method end to end. Anonymized examples show patterns from real engagements. Nothing here presents invented numbers as verified results.")
+                  "A portfolio built for honesty as much as ambition. Concept campaigns show how we'd approach brands we admire. Illustrative scenarios show our method end to end. Anonymized examples show patterns from real engagements. Nothing here presents invented numbers as verified results.", divider=True)
     html += f"""
 <section class="sec sec--tight" id="clients"><div class="wrap">
 <div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Clients")}<h2 class="h2 rv" data-split>Brands we&rsquo;ve worked with.</h2></div><p class="lead rv">A selection of the 30+ brands we&rsquo;ve worked with, from DTC health and apparel to mortgage, insurance and B2B software.</p></div>
