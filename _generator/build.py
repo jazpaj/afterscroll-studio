@@ -566,8 +566,9 @@ def build_home():
 <div class="wrap">
 <div class="sec-head">
 <div>{eyebrow("Insights")}<h2 class="h1 rv" data-split>Field notes from our team.</h2></div>
+<p class="lead rv">Practical guides on paid media, creative, search, AI and retention &mdash; written by the people doing the work.</p>
 </div>
-<div class="ins-grid">{icards(latest)}</div>
+<div class="ins-grid ins-grid--3">{icards(latest)}</div>
 <div class="btn-row rv" style="margin-top:clamp(24px,3vw,40px)"><a class="btn" href="/insights/"><span>All insights &rarr;</span></a></div>
 </div>
 </section>
@@ -765,7 +766,7 @@ def build_service(s):
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
 <div class="sec-head"><div>{eyebrow("Related reading")}<h2 class="h2 rv" data-split>From the insights desk.</h2></div></div>
-<div class="ins-grid">{icards(arts[:3])}</div>
+<div class="ins-grid ins-grid--3">{icards(arts[:3])}</div>
 </div></section>
 <section class="sec"><div class="wrap">
 <div class="sec-head"><div>{eyebrow("Other capabilities")}<h2 class="h2 rv" data-split>The rest of the system.</h2></div></div>
@@ -907,7 +908,7 @@ def build_industry(idx, ind):
 <section class="sec sec--ink2"><div class="wrap">
 <div class="sec-head"><div>{eyebrow("Related reading")}<h2 class="h2 rv" data-split>Field notes.</h2></div>
 <a class="tlink rv" href="/industries/{nxt[0]}/">Next: {nxt[1]} &rarr;</a></div>
-<div class="ins-grid">{icards(arts)}</div>
+<div class="ins-grid ins-grid--3">{icards(arts)}</div>
 </div></section>
 </main>"""
     html += footer()
@@ -1153,7 +1154,7 @@ def build_article(a):
 <section class="sec sec--ink2"><div class="wrap">
 <div class="sec-head"><div>{eyebrow("Related articles")}<h2 class="h2 rv" data-split>Keep reading.</h2></div>
 <a class="tlink rv" href="/insights/">All insights &rarr;</a></div>
-<div class="ins-grid">{icards(rel)}</div>
+<div class="ins-grid ins-grid--3">{icards(rel)}</div>
 </div></section>
 </article></main>"""
     html += footer()

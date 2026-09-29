@@ -562,6 +562,8 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 
 /* ---------- editorial / article ---------- */
 .ins-grid{display:grid;gap:clamp(14px,2vw,24px);grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+/* a fixed set of three: fill the row instead of leaving an empty 4th column on wide screens */
+@media (min-width:1000px){.ins-grid--3{grid-template-columns:repeat(3,1fr)}}
 .icard{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--ink-2);transition:border-color .45s,transform .5s var(--ease)}
 .icard:hover{border-color:var(--volt);transform:translateY(-4px)}
 .icard__art{aspect-ratio:16/10;display:grid;place-items:center;padding:18px;position:relative}
