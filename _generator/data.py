@@ -41,12 +41,17 @@ CLIENTS = [
      ["SEO", "Local Search", "Lead Generation", "Web CRO"]),
     ("Mirakl", "mirakl", "lower", "Software", "B2B marketplace platform",
      ["B2B Demand Generation", "LinkedIn", "Content", "CRO"]),
-    # added 2026-09-29 (owner-supplied logos); services not yet supplied, so the card omits that row
-    ("Mary Kay", "mary-kay", "caps", "Beauty", "Cosmetics & skincare", []),
-    ("AYBL", "aybl", "bold", "Apparel", "Gym & activewear", []),
-    ("OKAY Pure Naturals", "okay-pure-naturals", "bold", "Beauty", "Natural hair & skin care", []),
-    ("Thrive Market", "thrive-market", "caps", "Health & wellness", "Online organic grocery", []),
-    ("Pottery Barn", "pottery-barn", "wide", "Home", "Home furnishings", []),
+    # added 2026-09-29 (owner-supplied logos; services confirmed by the owner 2026-09-29)
+    ("Mary Kay", "mary-kay", "caps", "Beauty", "Cosmetics & skincare",
+     ["Social Creative", "Influencer Marketing", "Paid Social"]),
+    ("AYBL", "aybl", "bold", "Apparel", "Gym & activewear",
+     ["UGC Creative", "Paid Social", "Conversion Optimization"]),
+    ("OKAY Pure Naturals", "okay-pure-naturals", "bold", "Beauty", "Natural hair & skin care",
+     ["Performance Creative", "Amazon & Marketplace", "Paid Social"]),
+    ("Thrive Market", "thrive-market", "caps", "Health & wellness", "Online organic grocery",
+     ["Paid Social", "Email & SMS Retention", "CRO"]),
+    ("Pottery Barn", "pottery-barn", "wide", "Home", "Home furnishings",
+     ["Paid Search", "Performance Creative", "Email Retention"]),
 ]
 
 VERTICAL_MARQUEE = ["E-COMMERCE","DTC","SAAS","BEAUTY","FASHION","HOSPITALITY","REAL ESTATE",
