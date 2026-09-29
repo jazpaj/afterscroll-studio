@@ -946,10 +946,6 @@ def build_about():
 </div>
 <div class="stack">
 <blockquote class="quote rv">The brands winning right now aren't the ones with the biggest budgets. They're the ones producing the most genuinely different ideas and reading the results honestly.</blockquote>
-<div class="stat-strip rv">
-<div><b>50+</b><span>In-house specialists</span></div><div><b>7</b><span>Capability groups</span></div>
-<div><b>18+</b><span>Industries</span></div><div><b>1</b><span>Scorecard</span></div>
-</div>
 </div>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
