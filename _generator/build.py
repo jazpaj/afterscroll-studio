@@ -155,19 +155,18 @@ def nav():
 <div class="menu" id="menu" hidden>
 <nav class="menu__nav" aria-label="Mobile">{mlinks}</nav>
 <div class="menu__foot">
-<a class="btn btn--volt" href="/contact/"><span>Start a project &rarr;</span></a>
+<a class="btn btn--volt" href="/contact/"><span>Grow Your Brand &rarr;</span></a>
 {ig_link()}
 </div>
 </div>
 """
 
 def footer(sticky=True):
-    svc = "".join(f'<li><a href="/services/{s["slug"]}/">{s["name"]}</a></li>' for s in SERVICES)
     return f"""<footer class="foot">
 <div class="wrap foot__cta">
 <h2 class="foot__big rv">Your next customer<br>is already scrolling.<br><em>Make them stop.</em></h2>
 <div class="btn-row rv" style="margin-top:clamp(28px,4vw,52px)">
-<a class="btn btn--volt btn--lg" href="/contact/"><span>Start a project &rarr;</span></a>
+<a class="btn btn--volt btn--lg" href="/contact/"><span>Grow Your Brand &rarr;</span></a>
 <a class="btn btn--lg" href="/work/"><span>See our portfolio</span></a>
 </div>
 </div>
@@ -178,12 +177,6 @@ def footer(sticky=True):
 <p class="dim" style="margin-top:1rem;max-width:34ch">A creative growth agency built for the attention economy. Creative, performance, AI and technology in one in-house team.</p>
 <div class="socials">{ig_link()}</div>
 </div>
-<div class="foot__col"><h4>Navigate</h4><ul>
-<li><a href="/work/">Portfolio</a></li><li><a href="/services/">Services</a></li><li><a href="/staffing/">Staffing</a></li>
-<li><a href="/solutions/">Solutions</a></li><li><a href="/industries/">Industries</a></li>
-<li><a href="/insights/">Insights</a></li><li><a href="/about/">About</a></li>
-<li><a href="/contact/">Contact</a></li></ul></div>
-<div class="foot__col"><h4>Services</h4><ul>{svc}</ul></div>
 <div class="foot__col"><h4>Connect</h4><ul>
 <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
 <li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li></ul></div>
@@ -194,7 +187,7 @@ def footer(sticky=True):
 </div>
 </div>
 </footer>
-{'<div class="sticky-cta"><a class="btn btn--volt btn--block" href="/contact/"><span>Start a project &rarr;</span></a></div>' if sticky else ''}
+{'<div class="sticky-cta"><a class="btn btn--volt btn--block" href="/contact/"><span>Grow Your Brand &rarr;</span></a></div>' if sticky else ''}
 <script src="/assets/js/site.js?v={JS_V}" defer></script>
 </body>
 </html>"""
@@ -447,7 +440,7 @@ def build_home():
 <div class="hero__copy">
 <p class="lead rv">Afterscroll Studio is a team of 50+ US-based, in-house specialists &mdash; strategists, creatives, media buyers and engineers &mdash; who help ambitious brands win attention and turn it into measurable growth.</p>
 <div class="btn-row rv">
-<a class="btn btn--volt btn--lg" href="/contact/"><span>Start a project &rarr;</span></a>
+<a class="btn btn--volt btn--lg" href="/contact/"><span>Grow Your Brand &rarr;</span></a>
 <a class="btn btn--lg" href="#work"><span>See our portfolio &darr;</span></a>
 </div>
 <div class="hero__stats rv" data-grow>
@@ -559,7 +552,7 @@ def phero(trail, title, lead, meta=None, cta=True):
     m = ""
     if meta:
         m = '<div class="metabar rv">' + "".join(f"<div>{k}<b>{v}</b></div>" for k, v in meta) + "</div>"
-    btns = ('<div class="btn-row rv"><a class="btn btn--volt" href="/contact/"><span>Start a project &rarr;</span></a>'
+    btns = ('<div class="btn-row rv"><a class="btn btn--volt" href="/contact/"><span>Grow Your Brand &rarr;</span></a>'
             '<a class="btn" href="/work/"><span>See our portfolio</span></a></div>') if cta else ""
     return f"""<section class="phero">
 <div class="wrap">
@@ -987,7 +980,7 @@ def build_contact():
     bopts = "".join(f"<option>{b}</option>" for b in budgets)
     times = ["Immediately","Within 30 days","This quarter","Next quarter","Exploring"]
     topts = "".join(f"<option>{t}</option>" for t in times)
-    html = head("Contact — Start A Project | Afterscroll Studio",
+    html = head("Contact — Grow Your Brand | Afterscroll Studio",
                 "Tell us about your brand and what you need: creative, paid media, UGC, SEO and GEO, branding, web, email and SMS, AI automation or account recovery support.",
                 "/contact/", extra_ld=bc_ld(trail))
     html += nav() + "<main id=\"main\">"
@@ -1126,7 +1119,7 @@ def build_article(a):
 </section>
 <section class="sec sec--tight"><div class="wrap art-layout">
 <div class="prose rv">{body}
-<div class="callout" style="margin-top:2rem"><h3>Want this run for you?</h3><p class="dim">We build and operate these systems as an engagement &mdash; creative, media, search, AI and measurement in one loop.</p><a class="btn btn--volt" style="margin-top:1.2rem" href="/contact/"><span>Start a project &rarr;</span></a></div>
+<div class="callout" style="margin-top:2rem"><h3>Want this run for you?</h3><p class="dim">We build and operate these systems as an engagement &mdash; creative, media, search, AI and measurement in one loop.</p><a class="btn btn--volt" style="margin-top:1.2rem" href="/contact/"><span>Grow Your Brand &rarr;</span></a></div>
 </div>
 <aside class="stack">
 <nav class="toc rv" aria-label="On this page"><h4>On this page</h4><ol>{tocs}</ol></nav>
