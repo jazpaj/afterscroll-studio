@@ -203,7 +203,7 @@ def _png_size(rel):
     return int.from_bytes(head[16:20], "big"), int.from_bytes(head[20:24], "big")
 
 # marks whose wordmark is small relative to their icon need a nudge to read at strip size
-LOGO_BOOST = {"phoenix-peptide": 1.5}
+LOGO_BOOST = {"phoenix-peptide": 1.5, "okay-pure-naturals": 1.6}
 
 def logo_img(name, slug, style):
     rel = f"assets/img/clients/{slug}.png"
@@ -219,8 +219,9 @@ def client_cards(clients):
     return "".join(
         f'<li class="ccard rv"><div class="ccard__logo">{logo_img(name, slug, style)}</div>'
         f'<div class="ccard__meta"><b>{name}</b><span>{what}</span></div><span class="ccard__ind">{ind}</span>'
-        f'<div class="ccard__svc"><span class="ccard__svcl">Services</span>'
-        f'<div class="tagcloud">{"".join(f"<span class=chip>{x}</span>" for x in svc)}</div></div></li>'
+        + (f'<div class="ccard__svc"><span class="ccard__svcl">Services</span>'
+           f'<div class="tagcloud">{"".join(f"<span class=chip>{x}</span>" for x in svc)}</div></div>' if svc else "")
+        + '</li>'
         for name, slug, style, ind, what, svc in clients)
 
 def logo_items(clients):

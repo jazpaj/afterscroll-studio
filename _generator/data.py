@@ -41,6 +41,12 @@ CLIENTS = [
      ["SEO", "Local Search", "Lead Generation", "Web CRO"]),
     ("Mirakl", "mirakl", "lower", "Software", "B2B marketplace platform",
      ["B2B Demand Generation", "LinkedIn", "Content", "CRO"]),
+    # added 2026-09-29 (owner-supplied logos); services not yet supplied, so the card omits that row
+    ("Mary Kay", "mary-kay", "caps", "Beauty", "Cosmetics & skincare", []),
+    ("AYBL", "aybl", "bold", "Apparel", "Gym & activewear", []),
+    ("OKAY Pure Naturals", "okay-pure-naturals", "bold", "Beauty", "Natural hair & skin care", []),
+    ("Thrive Market", "thrive-market", "caps", "Health & wellness", "Online organic grocery", []),
+    ("Pottery Barn", "pottery-barn", "wide", "Home", "Home furnishings", []),
 ]
 
 VERTICAL_MARQUEE = ["E-COMMERCE","DTC","SAAS","BEAUTY","FASHION","HOSPITALITY","REAL ESTATE",
