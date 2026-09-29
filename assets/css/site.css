@@ -533,6 +533,8 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 .phero__crumb{display:flex;gap:.5rem;align-items:center;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-faint);margin-bottom:clamp(20px,3vw,36px)}
 .phero__crumb a:hover{color:var(--volt)}
 .phero__t{font-size:var(--step-5);letter-spacing:-.05em;text-transform:uppercase;line-height:.9}
+.phero__split{display:grid;gap:clamp(16px,2.4vw,32px)}
+@media (min-width:920px){.phero__split{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:end}}
 .phero__grid{display:grid;gap:clamp(24px,3vw,48px);margin-top:clamp(24px,3vw,44px)}
 @media (min-width:920px){.phero__grid{grid-template-columns:1.1fr 1fr;align-items:end}}
 .metabar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1.2rem;padding-block:clamp(18px,2vw,26px);border-block:1px solid var(--line)}
@@ -566,9 +568,7 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 @media (min-width:1000px){.ins-grid--3{grid-template-columns:repeat(3,1fr)}}
 .icard{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--ink-2);transition:border-color .45s,transform .5s var(--ease)}
 .icard:hover{border-color:var(--volt);transform:translateY(-4px)}
-.icard__art{aspect-ratio:16/10;display:grid;place-items:center;padding:18px;position:relative}
-.icard__art span{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;position:absolute;top:12px;left:12px;padding:.3rem .6rem;border-radius:99px;background:rgba(255,255,255,.9);color:var(--volt)}
-.icard__art b{font-family:var(--font-serif);font-style:italic;font-size:clamp(1.4rem,3vw,2.2rem);opacity:.5;text-align:center;line-height:1}
+.icard__cat{align-self:flex-start;padding:.28rem .6rem;border-radius:99px;background:var(--tint);color:var(--volt);font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase}
 .icard__body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
 .icard__t{font-family:var(--font-display);font-weight:800;font-size:var(--step-1);letter-spacing:-.025em;line-height:1.12}
 .icard__m{margin-top:auto;display:flex;gap:.8rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ivory-faint)}
@@ -667,7 +667,6 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
   .foot__big{font-size:clamp(2.3rem,11vw,3rem)}
   .res b{font-size:var(--step-2)}
   /* phones: cards stack one per row, so keep their decorative art panels flatter */
-  .icard__art{aspect-ratio:2/1}
   .wcard__art{aspect-ratio:16/9;padding:40px 16px 16px}
   .ccard{padding:14px;gap:10px 12px}
   .ccard__logo{min-height:68px}

@@ -391,8 +391,7 @@ def icards(arts):
     for a in arts:
         d = datetime.date.fromisoformat(a["date"]).strftime("%d %b %Y")
         out += f"""<a class="icard rv" href="/insights/{a['slug']}/" data-cat="{esc(a['cat'])}" data-search="{esc(a['title'] + ' ' + a['dek'] + ' ' + a['cat'])}">
-<div class="icard__art art-{(sum(map(ord, a['slug'])) % 6) + 1}"><span>{a['cat']}</span><b>{esc(a['title'].split(' ')[0])}</b></div>
-<div class="icard__body"><h3 class="icard__t">{esc(a['title'])}</h3><p class="dim" style="font-size:.92rem">{esc(a['dek'])}</p>
+<div class="icard__body"><span class="icard__cat">{a['cat']}</span><h3 class="icard__t">{esc(a['title'])}</h3><p class="dim" style="font-size:.92rem">{esc(a['dek'])}</p>
 <div class="icard__m"><span>{d}</span><span>{a['read']} min read</span></div></div></a>"""
     return out
 
@@ -588,8 +587,7 @@ def phero(trail, title, lead, meta=None, cta=True, divider=False):
     return f"""<section class="phero">
 <div class="wrap">
 {crumbs(trail)}
-<h1 class="phero__t"><span class="rv-line"><span>{title}</span></span></h1>
-<div class="phero__grid"><p class="lead rv">{lead}</p>{btns}</div>
+{f'<div class="phero__split"><h1 class="phero__t"><span class="rv-line"><span>{title}</span></span></h1><p class="lead rv">{lead}</p></div>' if not cta and lead else f'<h1 class="phero__t"><span class="rv-line"><span>{title}</span></span></h1><div class="phero__grid">' + (f'<p class="lead rv">{lead}</p>' if lead else "") + btns + "</div>"}
 {m}
 </div>
 </section>"""
