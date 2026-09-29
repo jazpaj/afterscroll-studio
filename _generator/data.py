@@ -2,7 +2,7 @@
 """Afterscroll Studio — site content."""
 
 SITE = "Afterscroll Studio"
-BASE = "https://afterscrollstudio.com"
+BASE = "https://www.afterscrollstudio.com"
 IG = "https://www.instagram.com/afterscrollstudio"
 IG_HANDLE = "@afterscrollstudio"
 EMAIL = "inquiry@afterscrollstudio.com"

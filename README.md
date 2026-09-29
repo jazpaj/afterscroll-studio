@@ -1,23 +1,30 @@
 # Afterscroll Studio — website
 
-**Live preview → https://jazpaj.github.io/afterscroll-studio/**
+**Live site → https://www.afterscrollstudio.com/** (cPanel) · preview → https://jazpaj.github.io/afterscroll-studio/
 
-A static, dependency-free marketing site: 72 pages of hand-authored content generated from a
-small Python build script. No framework, no build toolchain, no npm install.
+A static, dependency-free marketing site: 73 pages generated from a small Python build script.
+No framework, no build toolchain, no npm install.
+
+## Deploying (cPanel or any static host) — copy and paste
+
+Every internal link is **relative** (`assets/…`, `../work/`), so the built files work wherever
+they're placed: a domain root, a subfolder, or GitHub Pages. No rebuild per host.
+
+1. Upload the **contents** of this folder into the domain's document root (usually `public_html/`),
+   so `index.html` sits directly in it. Keep the folder structure as is.
+2. Include the hidden **`.htaccess`** file (turn on "Show hidden files" in cPanel File Manager). It
+   serves the custom 404 page, redirects `afterscrollstudio.com` → `www.afterscrollstudio.com`, and
+   blocks the source files below from being served.
+3. You don't need to upload `_generator/`, `README.md`, `.git/`, `.gitignore` or `.nojekyll`. If
+   they do get uploaded, `.htaccess` returns 404 for them.
 
 ## Run it locally
 
-The committed build is targeted at the GitHub Pages subpath `/afterscroll-studio/`, so serve the
-**parent** folder to mirror the live URL exactly:
-
 ```bash
-cd .. && python3 -m http.server 4321
+python3 -m http.server 4321
 ```
 
-Then open http://localhost:4321/afterscroll-studio/.
-
-(If you rebuild for a domain root with `BASE_PATH` unset, serve this folder directly instead:
-`python3 -m http.server 4321` from inside it, then open http://localhost:4321.)
+From inside this folder, then open http://localhost:4321.
 
 ## Structure
 
@@ -43,40 +50,28 @@ All copy lives in `_generator/data.py` (services, case studies, industries, pack
 31 articles). Templates and page assembly live in `_generator/build.py`. After any edit:
 
 ```bash
-python3 afterscroll-studio/_generator/build.py
+python3 _generator/build.py
 ```
 
 The script rewrites every page, recomputes the sitemap, and prints a warning for any page whose
 `<title>` exceeds 70 characters or `<meta description>` exceeds 165 — the search-result limits.
 CSS and JS are cache-busted automatically with a content hash (`site.css?v=…`).
 
-## Rebuilding for a deploy target
+## Rebuilding
 
-Internal links are root-absolute, so the build needs to know where the site will live. Two
-environment variables control it:
+The build needs Python 3.12+ (macOS: `/opt/homebrew/bin/python3.13`). From this folder:
+
+```bash
+python3 _generator/build.py
+```
+
+That's all a normal rebuild needs; commit, push, then re-upload the changed files to cPanel.
+Two optional environment variables exist for unusual setups:
 
 | Variable | Purpose |
 |---|---|
-| `BASE_PATH` | URL subpath the site is served from. Empty for a domain root. |
-| `SITE_BASE` | Absolute origin used for canonicals, Open Graph URLs and the sitemap. |
-
-**GitHub Pages (current deploy — served from `/afterscroll-studio/`):**
-
-```bash
-BASE_PATH=/afterscroll-studio \
-SITE_BASE=https://jazpaj.github.io/afterscroll-studio \
-python3 afterscroll-studio/_generator/build.py
-```
-
-**A real domain at the root** — this is what you'll switch to when the domain is ready:
-
-```bash
-SITE_BASE=https://afterscrollstudio.com python3 afterscroll-studio/_generator/build.py
-```
-
-Commit and push; Pages redeploys from `main` automatically. Note that the committed HTML has the
-current `BASE_PATH` baked into every link — if you point a custom domain at this repo, rebuild with
-`BASE_PATH` unset first, or every link will 404.
+| `SITE_BASE` | Absolute origin for canonicals, Open Graph URLs and the sitemap. Defaults to `BASE` in `data.py` (`https://www.afterscrollstudio.com`). |
+| `BASE_PATH` | Only affects `404.html` and `.htaccess`, which need root-absolute paths. Leave empty for a domain root; set e.g. `/subfolder` if the whole site lives in a subfolder. |
 
 ## Design system
 
@@ -90,9 +85,8 @@ current `BASE_PATH` baked into every link — if you point a custom domain at th
 
 ## Before you go live
 
-1. **Domain** — the site is currently built for the GitHub Pages URL. When the real domain is
-   ready, add it under repo Settings → Pages → Custom domain, then rebuild with `BASE_PATH` unset
-   and `SITE_BASE` set to the domain (see *Rebuilding for a deploy target* above).
+1. **Domain** — live on cPanel at https://www.afterscrollstudio.com/. The GitHub Pages copy keeps
+   working as a preview because links are relative (its 404 page is unstyled, which is expected).
 2. **Contact form** — `#intake` is currently front-end only: it validates, shows a success state and
    sends nothing. Point it at your form handler or CRM endpoint (Formspree, Netlify Forms, HubSpot,
    your own API) in `_generator/build.py` → `build_contact()`.
@@ -100,10 +94,9 @@ current `BASE_PATH` baked into every link — if you point a custom domain at th
    real. (LinkedIn was removed from the site on 2026-09-28.)
 4. **OG image** — `assets/img/og.svg` works, but some platforms only accept raster. Export a
    1200×630 PNG and swap the two `og:image` / `twitter:image` references in `build.py` → `head()`.
-5. **Delete or exclude `_generator/`** from the deployed directory if you'd rather not publish the
-   source. Nothing on the site links to it.
-6. **404** — `404.html` sits at the root and is already serving on Pages. A `.nojekyll` file keeps
-   GitHub from running the site through Jekyll.
+5. **Source files** — `_generator/` doesn't need to be uploaded; `.htaccess` blocks it if it is.
+6. **404** — `404.html` sits at the root; `.htaccess` (`ErrorDocument 404`) serves it on cPanel.
+   A `.nojekyll` file keeps GitHub from running the site through Jekyll.
 7. **Repo visibility** — the repo is public, which is what makes the free Pages preview link work.
    Making it private on a free plan also takes the preview offline.
 

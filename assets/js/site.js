@@ -320,9 +320,9 @@
   }
 
   /* ---------- active nav state ---------- */
+  // links are relative, so compare resolved pathnames (works at a domain root or in a subfolder)
   var path = location.pathname.replace(/index\.html$/, '');
   $$('.nav__links a, .menu__nav a').forEach(function (a) {
-    var href = a.getAttribute('href') || '';
-    if (href === '/' ? path === '/' : path.indexOf(href) === 0) a.setAttribute('aria-current', 'page');
+    if (path.indexOf(a.pathname.replace(/index\.html$/, '')) === 0) a.setAttribute('aria-current', 'page');
   });
 })();
