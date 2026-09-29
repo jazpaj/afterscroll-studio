@@ -508,7 +508,7 @@ def build_home():
 
 <section class="sec">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div class="sec-head">
 <div>{eyebrow("Why Afterscroll")}<h2 class="h1 rv" data-split>Built in-house. Built to perform.</h2></div>
 <p class="lead rv">Most agencies outsource the work you're paying for. We don't. Our entire team is hired, trained and managed in-house in the US &mdash; so the quality, speed and accountability stay with us.</p>
 </div>
@@ -518,7 +518,7 @@ def build_home():
 
 <section class="sec sec--ink2" id="services">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div class="sec-head">
 <div>{eyebrow("What we do")}<h2 class="h1 rv" data-split>Everything growth needs, under one roof.</h2></div>
 <p class="lead rv">Creative, media, search, AI and technology &mdash; connected into one growth system instead of five disconnected vendors.</p>
 </div>
@@ -543,7 +543,7 @@ def build_home():
 
 <section class="sec" id="work">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div class="sec-head">
 <div>{eyebrow("Case studies")}<h2 class="h1 rv" data-split>Work that moves.</h2></div>
 <p class="lead rv">A few examples of how we think and build &mdash; each one clearly labelled as concept, illustrative or anonymized.</p>
 </div>
@@ -554,7 +554,7 @@ def build_home():
 
 <section class="sec sec--ink2">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div class="sec-head">
 <div>{eyebrow("How we work")}<h2 class="h1 rv" data-split>Three steps. No guessing.</h2></div>
 <p class="lead rv">A simple, repeatable process run by the same in-house team from kickoff to scale.</p>
 </div>
@@ -564,7 +564,7 @@ def build_home():
 
 <section class="sec">
 <div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(28px,3.5vw,52px)">
+<div class="sec-head">
 <div>{eyebrow("Insights")}<h2 class="h1 rv" data-split>Field notes from our team.</h2></div>
 </div>
 <div class="ins-grid">{icards(latest)}</div>
@@ -605,7 +605,7 @@ def build_work():
                   "A portfolio built for honesty as much as ambition. Concept campaigns show how we'd approach brands we admire. Illustrative scenarios show our method end to end. Anonymized examples show patterns from real engagements. Nothing here presents invented numbers as verified results.", divider=True)
     html += f"""
 <section class="sec sec--tight" id="clients"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Clients")}<h2 class="h2 rv" data-split>Brands we&rsquo;ve worked with.</h2></div><p class="lead rv">A selection of the 30+ brands we&rsquo;ve worked with, from DTC health and apparel to mortgage, insurance and B2B software.</p></div>
+<div class="sec-head"><div>{eyebrow("Clients")}<h2 class="h2 rv" data-split>Brands we&rsquo;ve worked with.</h2></div><p class="lead rv">A selection of the 30+ brands we&rsquo;ve worked with, from DTC health and apparel to mortgage, insurance and B2B software.</p></div>
 <ul class="ccards">{client_cards(CLIENTS)}<li class="ccard ccard--more rv"><h3 class="ccard__moret">Plus many more brands</h3><a class="tlink" href="/contact/">Be the next one &rarr;</a></li></ul>
 </div></section>
 <section class="sec sec--tight"><div class="wrap">{eyebrow("Case studies")}<div class="work">{work_cards(CASES)}</div></div></section>
@@ -680,7 +680,7 @@ def build_case(c):
 </section>
 <section class="sec sec--tight case-body"><div class="wrap">{body}</div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("More work")}<h2 class="h2 rv" data-split>Keep reading.</h2></div></div>
+<div class="sec-head"><div>{eyebrow("More work")}<h2 class="h2 rv" data-split>Keep reading.</h2></div></div>
 <div class="work">{work_cards(others)}</div>
 </div></section>
 </main>"""
@@ -707,11 +707,11 @@ def build_services():
                   "From the first impression to the final conversion, our 50+ in-house specialists connect creative, media, technology and measurement into one growth system. Seven capability groups, run as one team.",
                   divider=True)
     html += f"""<section class="sec sec--tight"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(24px,3vw,44px)"><div>{eyebrow("Full service list")}<h2 class="h2 rv" data-split>Everything we do, in one place.</h2></div><p class="lead rv">Every service our in-house team delivers. Tap any service for scope, process and the numbers we hold it to.</p></div>
+<div class="sec-head"><div>{eyebrow("Full service list")}<h2 class="h2 rv" data-split>Everything we do, in one place.</h2></div><p class="lead rv">Every service our in-house team delivers. Tap any service for scope, process and the numbers we hold it to.</p></div>
 {rows}
 </div></section>
 <section class="sec"><div class="wrap">
-<div class="sec-head sec-head--stack" style="margin-bottom:clamp(30px,3.5vw,52px)"><div>{eyebrow("The Afterscroll System")}<h2 class="h1 rv" data-split>How the work actually runs.</h2></div></div>
+<div class="sec-head sec-head--stack"><div>{eyebrow("The Afterscroll System")}<h2 class="h1 rv" data-split>How the work actually runs.</h2></div></div>
 {system_block()}
 </div></section>
 </main>"""
@@ -731,15 +731,15 @@ def build_service(s):
            sorted(ARTICLES, key=lambda a: a["date"], reverse=True)[:3]
     extra = ""
     if s["slug"] == "account-recovery":
-        extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Capability index")}<h2 class="h1 rv" data-split>When the platform stops playing nice.</h2></div><p class="lead rv">Search everything we support across Meta, TikTok, Google, e-commerce and security. Recovery and appeal <b>support</b> — we prepare, troubleshoot and manage the process.</p></div>{caps_block()}</div></section>'
+        extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="sec-head"><div>{eyebrow("Capability index")}<h2 class="h1 rv" data-split>When the platform stops playing nice.</h2></div><p class="lead rv">Search everything we support across Meta, TikTok, Google, e-commerce and security. Recovery and appeal <b>support</b> — we prepare, troubleshoot and manage the process.</p></div>{caps_block()}</div></section>'
     elif s["slug"] == "performance":
-        extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Creative testing")}<h2 class="h1 rv" data-split>Creative is the new targeting.</h2></div></div>{matrix_block()}</div></section><section class="sec"><div class="wrap"><div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Reporting")}<h2 class="h1 rv" data-split>No vanity metrics.</h2></div></div>{dashboard()}</div></section>'
+        extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="sec-head"><div>{eyebrow("Creative testing")}<h2 class="h1 rv" data-split>Creative is the new targeting.</h2></div></div>{matrix_block()}</div></section><section class="sec"><div class="wrap"><div class="sec-head"><div>{eyebrow("Reporting")}<h2 class="h1 rv" data-split>No vanity metrics.</h2></div></div>{dashboard()}</div></section>'
     elif s["slug"] == "ai":
-        extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("The loop")}<h2 class="h1 rv" data-split>Data &rarr; AI &rarr; creative &rarr; distribution &rarr; learning &rarr; scale.</h2></div></div>{ai_flow()}<div class="tagcloud rv" style="margin-top:2rem">{"".join(f'<span class="chip">{a}</span>' for a in AI_USES)}</div></div></section>'
+        extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="sec-head"><div>{eyebrow("The loop")}<h2 class="h1 rv" data-split>Data &rarr; AI &rarr; creative &rarr; distribution &rarr; learning &rarr; scale.</h2></div></div>{ai_flow()}<div class="tagcloud rv" style="margin-top:2rem">{"".join(f'<span class="chip">{a}</span>' for a in AI_USES)}</div></div></section>'
     elif s["slug"] == "seo-geo":
         extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="two two--l"><div class="stack">{eyebrow("GEO")}<h2 class="h1 rv" data-split>Appear in the answer, not just the list.</h2><p class="lead rv">Google Search, Google AI experiences, ChatGPT-style search, AI assistants and answer engines all summarise categories before a click happens. We work on entity clarity, extractable content and third-party corroboration.</p><div class="tagcloud rv">{"".join(f'<span class="chip">{g}</span>' for g in GEO_SERVICES)}</div></div><div class="card rv"><span class="card__n">Honest limits</span><h3 class="card__t">No guaranteed AI rankings</h3><p class="card__d">Nobody controls whether a model mentions a brand. Outputs vary by prompt, model version and user context. We measure mention presence and accuracy against a fixed monthly prompt set, alongside branded search and direct traffic.</p></div></div></div></section>'
     elif s["slug"] == "creative":
-        extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Creators &amp; UGC")}<h2 class="h1 rv" data-split>People don\'t want ads.</h2></div><p class="lead rv">A roster model with rights cleared up front: usage term, paid media rights, whitelisting, edit rights and exclusivity agreed before production.</p></div><div class="rail-wrap"><div class="rail">{"".join(f'<div class="creator rv"><div class="creator__art art-{(i%6)+1}"><b>{n}</b></div><div class="creator__meta"><div class="creator__row"><span>{fmt}</span><b>{vol}</b></div><div class="creator__row"><span>{st}</span><span>Rights cleared</span></div></div></div>' for i,(n,fmt,vol,st) in enumerate(CREATORS))}</div></div></div></section>'
+        extra = f'<section class="sec sec--ink2"><div class="wrap"><div class="sec-head"><div>{eyebrow("Creators &amp; UGC")}<h2 class="h1 rv" data-split>People don\'t want ads.</h2></div><p class="lead rv">A roster model with rights cleared up front: usage term, paid media rights, whitelisting, edit rights and exclusivity agreed before production.</p></div><div class="rail-wrap"><div class="rail">{"".join(f'<div class="creator rv"><div class="creator__art art-{(i%6)+1}"><b>{n}</b></div><div class="creator__meta"><div class="creator__row"><span>{fmt}</span><b>{vol}</b></div><div class="creator__row"><span>{st}</span><span>Rights cleared</span></div></div></div>' for i,(n,fmt,vol,st) in enumerate(CREATORS))}</div></div></div></section>'
 
     html = head(s["meta_title"] + " | Afterscroll Studio", s["meta_desc"], f"/services/{s['slug']}/",
                 extra_ld={"@context": "https://schema.org", "@type": "Service", "serviceType": s["name"],
@@ -749,7 +749,7 @@ def build_service(s):
     html += phero(trail, s["name"], s["blurb"], meta=[(k, v) for k, v in s["kpis"]])
     html += f"""
 <section class="sec sec--tight"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("How we work")}<h2 class="h2 rv" data-split>Four moving parts.</h2></div><p class="lead rv">{s['desc']}</p></div>
+<div class="sec-head"><div>{eyebrow("How we work")}<h2 class="h2 rv" data-split>Four moving parts.</h2></div><p class="lead rv">{s['desc']}</p></div>
 <div class="grid grid-2">{pill}</div>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap two">
@@ -760,15 +760,15 @@ def build_service(s):
 </div></section>
 {extra}
 <section class="sec"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,40px)"><div>{eyebrow("Measured on")}<h2 class="h2 rv" data-split>The numbers we hold this to.</h2></div></div>
+<div class="sec-head"><div>{eyebrow("Measured on")}<h2 class="h2 rv" data-split>The numbers we hold this to.</h2></div></div>
 <div class="res rv">{kpis}</div>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,40px)"><div>{eyebrow("Related reading")}<h2 class="h2 rv" data-split>From the insights desk.</h2></div></div>
+<div class="sec-head"><div>{eyebrow("Related reading")}<h2 class="h2 rv" data-split>From the insights desk.</h2></div></div>
 <div class="ins-grid">{icards(arts[:3])}</div>
 </div></section>
 <section class="sec"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(20px,2.5vw,32px)"><div>{eyebrow("Other capabilities")}<h2 class="h2 rv" data-split>The rest of the system.</h2></div></div>
+<div class="sec-head"><div>{eyebrow("Other capabilities")}<h2 class="h2 rv" data-split>The rest of the system.</h2></div></div>
 <div class="big-list">{relh}</div>
 </div></section>
 </main>"""
@@ -799,16 +799,16 @@ def build_staffing():
     html = html.replace('<span>See our portfolio</span></a></div>', '<span>See the roles</span></a></div>', 1).replace('<a class="btn" href="/work/"><span>See the roles</span>', '<a class="btn" href="#roles"><span>See the roles</span>', 1)
     html += f"""
 <section class="sec sec--tight" id="roles"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Roles we fill")}<h2 class="h1 rv" data-split>Every seat, filled with the right skills.</h2></div><p class="lead rv">Pick one role or staff an entire function. Every VA is matched to the job, not pulled from a generic pool.</p></div>
+<div class="sec-head"><div>{eyebrow("Roles we fill")}<h2 class="h1 rv" data-split>Every seat, filled with the right skills.</h2></div><p class="lead rv">Pick one role or staff an entire function. Every VA is matched to the job, not pulled from a generic pool.</p></div>
 <div class="stack-lg">{"".join(groups)}</div>
 <p class="form__note rv" style="margin-top:1.4rem">Need a role that isn&rsquo;t listed? Tell us what the job looks like and we&rsquo;ll scope it.</p>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("How it works")}<h2 class="h1 rv" data-split>From open role to productive VA.</h2></div><p class="lead rv">We handle the whole process, so your team never has to run a hiring pipeline.</p></div>
+<div class="sec-head"><div>{eyebrow("How it works")}<h2 class="h1 rv" data-split>From open role to productive VA.</h2></div><p class="lead rv">We handle the whole process, so your team never has to run a hiring pipeline.</p></div>
 <div class="grid grid-4">{steps}</div>
 </div></section>
 <section class="sec"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Why Afterscroll staffing")}<h2 class="h1 rv" data-split>More than a VA marketplace.</h2></div></div>
+<div class="sec-head"><div>{eyebrow("Why Afterscroll staffing")}<h2 class="h1 rv" data-split>More than a VA marketplace.</h2></div></div>
 <div class="grid grid-4">{why}</div>
 <div class="btn-row rv" style="margin-top:clamp(28px,3.5vw,48px)"><a class="btn btn--volt btn--lg" href="/contact/"><span>Staff a role &rarr;</span></a><a class="btn btn--lg" href="/services/"><span>Agency services</span></a></div>
 </div></section>
@@ -838,16 +838,16 @@ def build_solutions():
                   divider=True)
     html += f"""
 <section class="sec sec--tight"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Engagement models")}<h2 class="h1 rv" data-split>Structure follows the outcome.</h2></div><p class="lead rv">Most partners start on a retainer or a productized program, then expand. Performance-aligned structures require clean measurement on both sides &mdash; we'll tell you honestly whether you have it.</p></div>
+<div class="sec-head"><div>{eyebrow("Engagement models")}<h2 class="h1 rv" data-split>Structure follows the outcome.</h2></div><p class="lead rv">Most partners start on a retainer or a productized program, then expand. Performance-aligned structures require clean measurement on both sides &mdash; we'll tell you honestly whether you have it.</p></div>
 <div class="grid grid-3">{engs}</div>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Productized packages")}<h2 class="h1 rv" data-split>Defined scope. Fast start.</h2></div><p class="lead rv">Each package is a starting point. We add, remove and resize components based on what you actually need &mdash; nothing here is take-it-or-leave-it.</p></div>
+<div class="sec-head"><div>{eyebrow("Productized packages")}<h2 class="h1 rv" data-split>Defined scope. Fast start.</h2></div><p class="lead rv">Each package is a starting point. We add, remove and resize components based on what you actually need &mdash; nothing here is take-it-or-leave-it.</p></div>
 <div class="grid grid-3">{packs}</div>
 <div class="note rv" style="margin-top:clamp(24px,3vw,36px)"><span class="volt">!</span><p><b>All packages are customizable.</b> Investment depends on scope, markets, production volume, channel mix and speed. Account Rescue is <b>support</b> work: we prepare, troubleshoot and manage platform processes, and outcomes remain with the platforms.</p></div>
 </div></section>
 <section class="sec"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Getting started")}<h2 class="h1 rv" data-split>What the first 30 days look like.</h2></div></div>
+<div class="sec-head"><div>{eyebrow("Getting started")}<h2 class="h1 rv" data-split>What the first 30 days look like.</h2></div></div>
 <div class="grid grid-4">
 {"".join(f'<div class="card rv"><span class="card__n">WEEK {i}</span><h3 class="card__t">{t}</h3><p class="card__d">{d}</p></div>' for i, (t, d) in enumerate([("Audit &amp; access", "Measurement teardown, account access, creative and content audit, competitive and search landscape."), ("Plan &amp; build", "Strategy, offer review, creative slate, account architecture, tracking fixes, landing modules."), ("Launch", "First test slate live, dashboards standing up, weekly rhythm established."), ("Read &amp; adjust", "First honest scorecard, learning log started, next quarter's plan drafted.")], 1))}
 </div>
@@ -892,7 +892,7 @@ def build_industry(idx, ind):
     html += phero(trail, name, f'<b class="volt">{tag}</b><br>{intro}', meta=[(k, v) for k, v in kpis])
     html += f"""
 <section class="sec sec--tight"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("The plays")}<h2 class="h2 rv" data-split>What we run first.</h2></div><p class="lead rv">We start where the leverage is, not where the retainer template says to. For {name.lower()}, that usually means these four.</p></div>
+<div class="sec-head"><div>{eyebrow("The plays")}<h2 class="h2 rv" data-split>What we run first.</h2></div><p class="lead rv">We start where the leverage is, not where the retainer template says to. For {name.lower()}, that usually means these four.</p></div>
 <div class="grid grid-4">{playh}</div>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap two">
@@ -901,11 +901,11 @@ def build_industry(idx, ind):
 <div class="res rv" style="margin-top:0">{kpih}</div>
 </div></section>
 <section class="sec"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(20px,2.5vw,32px)"><div>{eyebrow("Capabilities applied")}<h2 class="h2 rv" data-split>The system, pointed at {name.lower()}.</h2></div></div>
+<div class="sec-head"><div>{eyebrow("Capabilities applied")}<h2 class="h2 rv" data-split>The system, pointed at {name.lower()}.</h2></div></div>
 <div class="big-list">{svc}</div>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Related reading")}<h2 class="h2 rv" data-split>Field notes.</h2></div>
+<div class="sec-head"><div>{eyebrow("Related reading")}<h2 class="h2 rv" data-split>Field notes.</h2></div>
 <a class="tlink rv" href="/industries/{nxt[0]}/">Next: {nxt[1]} &rarr;</a></div>
 <div class="ins-grid">{icards(arts)}</div>
 </div></section>
@@ -950,16 +950,16 @@ def build_about():
 </div>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Values")}<h2 class="h1 rv" data-split>How we actually behave.</h2></div><p class="lead rv">Not a wall poster. These are the rules we use to settle arguments internally.</p></div>
+<div class="sec-head"><div>{eyebrow("Values")}<h2 class="h1 rv" data-split>How we actually behave.</h2></div><p class="lead rv">Not a wall poster. These are the rules we use to settle arguments internally.</p></div>
 <div class="grid grid-3">{vh}</div>
 </div></section>
 <section class="sec"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("The team")}<h2 class="h1 rv" data-split>50+ specialists. Six desks.</h2></div><p class="lead rv">Our entire team is full-time, in-house and based in the US &mdash; highly trained specialists organised into six desks. We staff engagements by discipline rather than by account manager, so you talk to the people doing the work.</p></div>
+<div class="sec-head"><div>{eyebrow("The team")}<h2 class="h1 rv" data-split>50+ specialists. Six desks.</h2></div><p class="lead rv">Our entire team is full-time, in-house and based in the US &mdash; highly trained specialists organised into six desks. We staff engagements by discipline rather than by account manager, so you talk to the people doing the work.</p></div>
 <div class="team">{team}</div>
 <p class="form__note rv" style="margin-top:1.4rem">Desk structure shown. Named team allocation is confirmed at proposal stage for each engagement.</p>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head sec-head--stack" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("Process")}<h2 class="h1 rv" data-split>The Afterscroll System.</h2></div></div>
+<div class="sec-head sec-head--stack"><div>{eyebrow("Process")}<h2 class="h1 rv" data-split>The Afterscroll System.</h2></div></div>
 {system_block()}
 </div></section>
 <section class="sec"><div class="wrap two">
@@ -1087,7 +1087,7 @@ def build_insights():
 <p class="empty" hidden>Nothing matches that search.</p>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(26px,3vw,44px)"><div>{eyebrow("What's moving right now")}<h2 class="h1 rv" data-split>Trend report.</h2></div><p class="lead rv">Our read as of <b class="volt">26 September 2026</b>. Trends move quickly and this is analysis rather than a live data feed &mdash; check the date before you plan a quarter around it.</p></div>
+<div class="sec-head"><div>{eyebrow("What's moving right now")}<h2 class="h1 rv" data-split>Trend report.</h2></div><p class="lead rv">Our read as of <b class="volt">26 September 2026</b>. Trends move quickly and this is analysis rather than a live data feed &mdash; check the date before you plan a quarter around it.</p></div>
 <div class="grid grid-3">{trends}</div>
 </div></section>
 </main>"""
@@ -1151,7 +1151,7 @@ def build_article(a):
 </aside>
 </div></section>
 <section class="sec sec--ink2"><div class="wrap">
-<div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Related articles")}<h2 class="h2 rv" data-split>Keep reading.</h2></div>
+<div class="sec-head"><div>{eyebrow("Related articles")}<h2 class="h2 rv" data-split>Keep reading.</h2></div>
 <a class="tlink rv" href="/insights/">All insights &rarr;</a></div>
 <div class="ins-grid">{icards(rel)}</div>
 </div></section>
