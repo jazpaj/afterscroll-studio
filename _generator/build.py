@@ -773,8 +773,7 @@ def build_staffing():
     html += nav() + "<main id=\"main\">"
     html += phero(trail, "Skilled VAs for every seat.",
                   "Afterscroll is also a staffing partner. We go into your business, map how it runs, and fill open or overloaded roles with well-trained virtual assistants &mdash; from creative strategists and ads operators to customer support and admin. We source, vet, train and manage them, so you get the output without the hiring headache.",
-                  meta=[("Roles", "Creative, growth, support, admin"), ("Model", "Dedicated VAs"),
-                        ("Managed by", "Afterscroll"), ("Scale", "One seat to full teams")])
+                  divider=True)
     html = html.replace('<span>See our portfolio</span></a></div>', '<span>See the roles</span></a></div>', 1).replace('<a class="btn" href="/work/"><span>See the roles</span>', '<a class="btn" href="#roles"><span>See the roles</span>', 1)
     html += f"""
 <section class="sec sec--tight" id="roles"><div class="wrap">
