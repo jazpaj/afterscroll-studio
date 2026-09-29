@@ -572,9 +572,7 @@ def build_work():
     html += nav()
     html += "<main id=\"main\">"
     html += phero(trail, "Work that moves.",
-                  "A portfolio built for honesty as much as ambition. Concept campaigns show how we'd approach brands we admire. Illustrative scenarios show our method end to end. Anonymized examples show patterns from real engagements. Nothing here presents invented numbers as verified results.",
-                  meta=[("Brands worked with", "30+"), ("Team", "50+ in-house, US-based"),
-                        ("Clients", "DTC, health, finance &amp; software"), ("Services", "Creative, media, search, AI &amp; staffing")])
+                  "A portfolio built for honesty as much as ambition. Concept campaigns show how we'd approach brands we admire. Illustrative scenarios show our method end to end. Anonymized examples show patterns from real engagements. Nothing here presents invented numbers as verified results.")
     html += f"""
 <section class="sec sec--tight" id="clients"><div class="wrap">
 <div class="sec-head" style="margin-bottom:clamp(24px,3vw,40px)"><div>{eyebrow("Clients")}<h2 class="h2 rv" data-split>Brands we&rsquo;ve worked with.</h2></div><p class="lead rv">A selection of the 30+ brands we&rsquo;ve worked with, from DTC health and apparel to mortgage, insurance and B2B software.</p></div>
