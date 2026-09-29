@@ -558,7 +558,7 @@ def phero(trail, title, lead, meta=None, cta=True):
 <div class="wrap">
 {crumbs(trail)}
 <h1 class="phero__t"><span class="rv-line"><span>{title}</span></span></h1>
-<div class="phero__grid">{f'<p class="lead rv">{lead}</p>' if lead else ""}{btns}</div>
+<div class="phero__grid"><p class="lead rv">{lead}</p>{btns}</div>
 {m}
 </div>
 </section>"""
@@ -571,7 +571,8 @@ def build_work():
                 "/work/", extra_ld=bc_ld(trail))
     html += nav()
     html += "<main id=\"main\">"
-    html += phero(trail, "Work that moves.", "",
+    html += phero(trail, "Work that moves.",
+                  "A portfolio built for honesty as much as ambition. Concept campaigns show how we'd approach brands we admire. Illustrative scenarios show our method end to end. Anonymized examples show patterns from real engagements. Nothing here presents invented numbers as verified results.",
                   meta=[("Brands worked with", "30+"), ("Team", "50+ in-house, US-based"),
                         ("Clients", "DTC, health, finance &amp; software"), ("Services", "Creative, media, search, AI &amp; staffing")])
     html += f"""
