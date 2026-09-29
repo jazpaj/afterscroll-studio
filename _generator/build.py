@@ -396,6 +396,31 @@ def icards(arts):
 <div class="icard__m"><span>{d}</span><span>{a['read']} min read</span></div></div></a>"""
     return out
 
+def frames_block():
+    """Four mock vertical-video frames for the Creative direction chapter (brand-neutral placeholders)."""
+    bar = lambda pct: f'<div class="vf__bar"><i style="width:{pct}%"></i></div>'
+    frames = [
+        ("Cold open", "vf--open",
+         bar(8) + '<div class="vf__mid"><span class="vf__cap">Wait for it&hellip;</span>'
+         '<span class="vf__sub">nobody films this part</span></div><span class="vf__time">0:01</span>'),
+        ("Product beat", "vf--prod",
+         bar(38) + '<span class="vf__chip">Hook B</span><i class="vf__prod"></i><i class="vf__shadow"></i>'
+         '<div class="vf__low"><span class="vf__cap vf__cap--dark">The detail that sells it</span></div>'),
+        ("Proof card", "vf--proof",
+         bar(66) + '<div class="vf__mid"><span class="vf__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>'
+         '<span class="vf__quote">&ldquo;Finally, one that actually lasts.&rdquo;</span>'
+         '<span class="vf__who">&mdash; verified buyer</span></div>'),
+        ("End frame", "vf--end",
+         bar(96) + '<div class="vf__mid"><i class="vf__logo"></i><span class="vf__brand">Your Brand</span>'
+         '<span class="vf__btn">Shop the drop &rarr;</span><span class="vf__url">yourbrand.com</span></div>'),
+    ]
+    cells = "".join(
+        f'<figure class="vf-wrap"><div class="vf {cls}" aria-hidden="true">{body}</div>'
+        f'<figcaption><b>Frame 0{i}</b>{name}</figcaption></figure>'
+        for i, (name, cls, body) in enumerate(frames, 1))
+    return (f'<div class="vf-row">{cells}</div>'
+            '<p class="form__note">Layout mockups indicating format and structure &mdash; not finished assets.</p>')
+
 # ================================================================ HOME
 def build_home():
     svc = "".join(
@@ -618,10 +643,7 @@ def build_case(c):
     for n, h, paras in chapters:
         inner = "".join(f"<p>{md(p)}</p>" for p in paras)
         if n == "05":
-            inner += ('<div class="mock-row">'
-                      + "".join(f'<div class="mock"><span>Frame 0{i}</span><em>{t}</em><span>Vertical 9:16</span></div>'
-                                for i, t in enumerate(["Cold open", "Product beat", "Proof card", "End frame"], 1))
-                      + "</div><p class=\"form__note\">Layout mockups indicating format and structure — not finished assets.</p>")
+            inner += frames_block()
         if n == "08":
             inner += matrix_block()
         body += (f'<div class="chapter rv"><div class="chapter__label"><span class="chapter__num">{n}</span>'
