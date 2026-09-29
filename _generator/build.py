@@ -432,12 +432,13 @@ def build_home():
 <section class="hero">
 <div class="hero__glow" aria-hidden="true"></div>
 <div class="wrap hero__in">
+<div class="hero__grid">
+<div class="hero__main">
 <div class="hero__kicker">
 <span class="pill pill--live">Creative growth agency</span>
 <a class="pill pill--cta hero__staff" href="/staffing/"><b>New</b>VA staffing is now live <span aria-hidden="true">&rarr;</span></a>
 </div>
 <h1 class="hero__title"><span class="ln"><span>Make them</span></span><span class="ln"><span>stop</span></span><span class="ln"><span>scrolling.</span></span></h1>
-<div class="hero__grid">
 <div class="hero__copy">
 <p class="lead rv">Afterscroll Studio is a team of 50+ US-based, in-house specialists &mdash; strategists, creatives, media buyers and engineers &mdash; who help ambitious brands win attention and turn it into measurable growth.</p>
 <div class="btn-row rv">
@@ -448,6 +449,7 @@ def build_home():
 <div><b class="counter" data-count="50" data-post="+">0</b><span>In-house specialists</span></div>
 <div><b class="counter" data-count="100" data-post="%">0</b><span>US-based team</span></div>
 <div><b class="counter" data-count="18" data-post="+">0</b><span>Industries served</span></div>
+</div>
 </div>
 </div>
 <div class="collage rv" aria-hidden="true">

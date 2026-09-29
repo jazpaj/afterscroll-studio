@@ -213,8 +213,14 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 .hero__title .ln:nth-child(2) > span{transition-delay:.09s}
 .hero__title .ln:nth-child(3) > span{transition-delay:.18s}
 .is-ready .hero__title .ln > span{transform:none}
-.hero__grid{display:grid;gap:clamp(28px,4vw,56px);margin-top:clamp(24px,3vw,40px);align-items:start}
-@media (min-width:1000px){.hero__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
+.hero__grid{display:grid;gap:clamp(28px,4vw,56px);align-items:start}
+/* desktop: heading + copy on the left, collage beside them, vertically centred against the text */
+@media (min-width:1000px){
+  .hero__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}
+  /* heading now shares the row with the collage: scale it to the half-width column so it stays on 3 lines */
+  .hero__title{font-size:min(var(--step-6),8.3vw)}
+}
+.hero__main .hero__copy{margin-top:clamp(24px,3vw,40px)}
 .hero__copy{display:flex;flex-direction:column;gap:clamp(22px,3vw,34px)}
 .hero__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding-top:1.5rem;border-top:1px solid var(--line)}
 .hero__stats b{display:block;font-family:var(--font-display);font-size:var(--step-2);letter-spacing:-.03em}
