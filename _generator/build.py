@@ -427,6 +427,10 @@ def build_home():
         f'<h3 class="card__t">{s["name"]}</h3><p class="card__d">{s["desc"]}</p>'
         f'<span class="svc-card__go" aria-hidden="true">&rarr;</span></a>'
         for s in SERVICES)
+    svc += ('<a class="card svc-card rv" href="/staffing/"><span class="card__n">08 &middot; VA Staffing</span>'
+            '<h3 class="card__t">Staffing</h3><p class="card__d">Skilled, managed virtual assistants for every seat &mdash; '
+            'creative strategists, ads operators, customer support and admin.</p>'
+            '<span class="svc-card__go" aria-hidden="true">&rarr;</span></a>')
 
     why = [("US-based &amp; in-house", "Every strategist, creative, media buyer and engineer on your account is a full-time Afterscroll employee based in the US. No offshore hand-offs, no freelancer roulette."),
            ("Highly trained specialists", "Deep, platform-level expertise across creative, paid media, search, AI and analytics &mdash; with continuous training as the platforms change."),
@@ -521,7 +525,7 @@ def build_home():
 <div>{eyebrow("What we do")}<h2 class="h1 rv" data-split>Everything growth needs, under one roof.</h2></div>
 <p class="lead rv">Creative, media, search, AI and technology &mdash; connected into one growth system instead of five disconnected vendors.</p>
 </div>
-<div class="grid grid-3">{svc}</div>
+<div class="grid svc-grid">{svc}</div>
 <div class="btn-row rv" style="margin-top:clamp(24px,3vw,40px)"><a class="btn" href="/services/"><span>See the full service list &rarr;</span></a></div>
 </div>
 </section>

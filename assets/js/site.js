@@ -23,7 +23,10 @@
       }
     }
     var sticky = $('.sticky-cta');
-    if (sticky) sticky.classList.toggle('show', y > 700);
+    // hide the floating CTA once the footer (which has its own CTA) is on screen
+    var foot = $('.foot');
+    var nearFoot = foot && foot.getBoundingClientRect().top < window.innerHeight - 40;
+    if (sticky) sticky.classList.toggle('show', y > 700 && !nearFoot);
     last = y;
   }
   window.addEventListener('scroll', onScroll, { passive: true });

@@ -641,6 +641,9 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 @media (min-width:1080px){.sticky-cta{display:none}}
 
 /* ---------- home service cards ---------- */
+.svc-grid{grid-template-columns:1fr}
+@media (min-width:640px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.svc-grid{grid-template-columns:repeat(4,1fr)}}
 .svc-card{padding-right:clamp(64px,6vw,76px)}
 .svc-card__go{position:absolute;top:clamp(20px,2.2vw,30px);right:clamp(20px,2.2vw,30px);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-strong);color:var(--volt);transition:background .35s,color .35s,border-color .35s,transform .45s var(--ease)}
 .svc-card:hover{border-color:var(--volt)}
@@ -821,3 +824,17 @@ body.menu-open .menu__nav a{opacity:1;transform:none;transition-delay:calc(.08s 
 .vf__btn{padding:.35rem .7rem;border-radius:99px;background:var(--volt);color:#fff;font-size:.62rem;font-weight:600}
 .vf__url{font-size:.55rem;color:var(--ivory-faint)}
 @media (prefers-reduced-motion:reduce){.vf__prod{animation:none}}
+
+/* ---------- mobile polish (QA pass) ---------- */
+@media (max-width:699px){
+  /* comfortable tap targets for text links */
+  .tlink{padding-top:.55rem;padding-bottom:.55rem}
+  .foot__col ul{gap:.15rem}
+  .foot__col a{display:inline-block;padding-block:.4rem}
+  /* keep small uppercase labels readable (>=10.5px) */
+  .chip,.icard__cat,.ccard__ind,.ccard__svcl,.wcard__label,.wcard__k div,.trend__cat,.trend__mv,.cap__g,
+  .disclaim,.metabar div,.foot__col h4,.kpi span,.dash__live,.flow__node i,.creator__row,.icard__m,
+  .tile__tag,.mock,.vf-wrap figcaption b,.regions div,.stat-strip span,.hero__stats span{font-size:.66rem}
+  /* staffing band: a few example roles are enough on a phone */
+  .staff-band__roles li:nth-child(n+5):not(:last-child){display:none}
+}
