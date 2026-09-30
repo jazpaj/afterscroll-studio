@@ -580,6 +580,10 @@ def build_home():
     html += footer()
     write("/", html, "1.0", "weekly")
 
+def lw(text):
+    """Longest unbreakable word (hyphens may wrap), so big headings can cap their size to fit it."""
+    return max((len(w) for w in re.split(r"[\s\-/]+", re.sub(r"<[^>]+>|&[a-z]+;", "", text)) if w), default=8)
+
 def phero(trail, title, lead, meta=None, cta=True, divider=False):
     m = ""
     if meta:
@@ -591,7 +595,7 @@ def phero(trail, title, lead, meta=None, cta=True, divider=False):
     return f"""<section class="phero">
 <div class="wrap">
 {crumbs(trail)}
-{f'<div class="phero__split"><h1 class="phero__t"><span class="rv-line"><span>{title}</span></span></h1><p class="lead rv">{lead}</p></div>' if not cta and lead else f'<h1 class="phero__t"><span class="rv-line"><span>{title}</span></span></h1><div class="phero__grid">' + (f'<p class="lead rv">{lead}</p>' if lead else "") + btns + "</div>"}
+{f'<div class="phero__split"><h1 class="phero__t" style="--lw:{lw(title)}"><span class="rv-line"><span>{title}</span></span></h1><p class="lead rv">{lead}</p></div>' if not cta and lead else f'<h1 class="phero__t" style="--lw:{lw(title)}"><span class="rv-line"><span>{title}</span></span></h1><div class="phero__grid">' + (f'<p class="lead rv">{lead}</p>' if lead else "") + btns + "</div>"}
 {m}
 </div>
 </section>"""
@@ -674,7 +678,7 @@ def build_case(c):
 <div class="wrap">
 {crumbs(trail)}
 <p class="disclaim rv">{c['label']}</p>
-<h1 class="phero__t" style="margin-top:1rem"><span class="rv-line"><span>{c['title']}</span></span></h1>
+<h1 class="phero__t" style="--lw:{lw(c['title'])};margin-top:1rem"><span class="rv-line"><span>{c['title']}</span></span></h1>
 <div class="phero__grid"><p class="lead rv">{c['summary']}</p>
 <div class="stack"><div class="tagcloud rv">{svc}</div><div class="tagcloud rv">{chn}</div></div></div>
 <div class="metabar rv"><div>Brand<b>{c['brand']}</b></div><div>Industry<b>{c['industry']}</b></div>
@@ -1135,7 +1139,7 @@ def build_article(a):
 <section class="phero">
 <div class="wrap">{crumbs([("Insights", "/insights/"), (a['cat'], "/insights/")])}
 <p class="mono volt rv">{a['cat']}</p>
-<h1 class="phero__t" style="font-size:var(--step-4);margin-top:1rem"><span class="rv-line"><span>{esc(a['title'])}</span></span></h1>
+<h1 class="phero__t phero__t--article" style="--lw:{lw(a['title'])};margin-top:1rem"><span class="rv-line"><span>{esc(a['title'])}</span></span></h1>
 <p class="lead rv" style="margin-top:clamp(20px,2.5vw,32px);max-width:62ch">{esc(a['dek'])}</p>
 <div class="artmeta rv"><span>By <b>{a['author']}</b></span><span>{d.strftime('%d %B %Y')}</span><span>{a['read']} min read</span><span>{a['cat']}</span></div>
 </div>
