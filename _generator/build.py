@@ -592,7 +592,7 @@ def phero(trail, title, lead, meta=None, cta=True, divider=False):
         m = '<hr class="rule phero__rule">'
     btns = ('<div class="btn-row rv"><a class="btn btn--volt" href="/contact/"><span>Grow Your Brand &rarr;</span></a>'
             '<a class="btn" href="/work/"><span>See our portfolio</span></a></div>') if cta else ""
-    return f"""<section class="phero">
+    return f"""<section class="phero{" phero--rule" if (divider and not meta) else ""}">
 <div class="wrap">
 {crumbs(trail)}
 {f'<div class="phero__split"><h1 class="phero__t" style="--lw:{lw(title)}"><span class="rv-line"><span>{title}</span></span></h1><p class="lead rv">{lead}</p></div>' if not cta and lead else f'<h1 class="phero__t" style="--lw:{lw(title)}"><span class="rv-line"><span>{title}</span></span></h1><div class="phero__grid">' + (f'<p class="lead rv">{lead}</p>' if lead else "") + btns + "</div>"}
