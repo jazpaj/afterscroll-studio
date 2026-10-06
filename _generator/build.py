@@ -471,7 +471,7 @@ def build_home():
 <p class="lead rv">Afterscroll Studio is a team of 50+ US-based, in-house specialists &mdash; strategists, creatives, media buyers and engineers &mdash; who help ambitious brands win attention and turn it into measurable growth.</p>
 <div class="btn-row rv">
 <a class="btn btn--volt btn--lg" href="/contact/"><span>Grow Your Brand &rarr;</span></a>
-<a class="btn btn--lg" href="#work"><span>See our portfolio &darr;</span></a>
+<a class="btn btn--lg" href="/work/"><span>See our portfolio &rarr;</span></a>
 </div>
 <div class="hero__stats rv" data-grow>
 <div><b class="counter" data-count="50" data-post="+">0</b><span>In-house specialists</span></div>
